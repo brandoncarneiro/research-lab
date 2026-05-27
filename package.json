@@ -1,0 +1,27 @@
+{
+  "name": "research-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Portable file-based research operating system for source-grounded Codex workflows.",
+  "scripts": {
+    "composio:list-toolkits": "tsx scripts/composio/list-toolkits.ts",
+    "composio:inspect-toolkit": "tsx scripts/composio/inspect-toolkit.ts",
+    "composio:create-research-sessions": "tsx scripts/composio/create-research-sessions.ts",
+    "composio:print-codex-mcp-config": "tsx scripts/composio/print-codex-mcp-config.ts",
+    "preflight:first-run": "tsx scripts/preflight/first-run-readiness.ts",
+    "preflight:context": "tsx scripts/preflight/context-preflight.ts",
+    "preflight:tool-policy": "tsx scripts/preflight/tool-policy-check.ts",
+    "preflight:artifact-standard": "tsx scripts/preflight/artifact-standard-check.ts",
+    "preflight": "npm run preflight:first-run && npm run preflight:context && npm run preflight:tool-policy && npm run preflight:artifact-standard",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@composio/core": "^0.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "tsx": "^4.22.3",
+    "typescript": "^6.0.3"
+  }
+}
