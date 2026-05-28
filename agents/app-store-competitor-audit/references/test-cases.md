@@ -15,7 +15,7 @@ Expected result:
 ## Should Not Trigger
 
 - "Synthesize the final master research report."
-- "Research pastors' theological objections to AI."
+- "Research regulatory objections to an AI product."
 - "Scrape LinkedIn profiles for founders."
 - "Use an unapproved paid scraper to pull all reviews."
 

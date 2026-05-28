@@ -202,7 +202,7 @@ Good examples:
 - `website-research`
 - `technical-research`
 - `app-competitor-research`
-- `trust-risk-theology-research`
+- `trust-risk-policy-research`
 
 ## Quality Bar
 

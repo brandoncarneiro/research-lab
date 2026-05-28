@@ -22,13 +22,7 @@ Use this runbook for every standard research run.
 16. Parent Codex validates citations, unsupported claims, artifact count, and brief-to-digest supportability.
 17. Stop.
 
-Exactly three final artifacts are produced by default:
-
-- `output/CEO_BRIEF.md`
-- `output/RAW_DATA_DIGEST.md`
-- `output/CHATGPT_PROJECT_DOC.md`
-
-Do not create duplicate summaries, alternate reports, or extra synthesis docs by default. `output/MASTER_RESEARCH.md` is legacy/optional only and must not be created unless the project owner explicitly asks for it.
+The final artifact contract is defined in `docs/RESEARCH_STANDARD.md`: exactly three final artifacts by default, no duplicate synthesis docs, and `MASTER_RESEARCH.md` only as a legacy optional add-on when explicitly requested.
 
 ## Commands
 
@@ -55,33 +49,15 @@ Replace `YYYY-MM-DD-topic` with the date and topic slug for the run.
 
 ## Supervisor Checklist
 
-- Confirm the brief exists.
-- Confirm the active project profile exists and was read.
-- Confirm the research question is decision-linked.
-- Confirm the decision owner/audience and decision affected are explicit.
-- Confirm out-of-scope boundaries are explicit.
-- Confirm evidence lanes are independent enough to run in parallel.
-- Confirm each lane has target sources.
-- Confirm required source context is available before synthesis.
-- Confirm each lane is restricted to `docs/TOOL_MENU.md`.
-- Confirm paid or conditional tools are not used unless approved in the brief.
-- Confirm no nested subagents are allowed.
-- Confirm raw lane file ownership is explicit.
-- Confirm no synthesis starts before raw lane outputs exist.
-- Confirm raw evidence is saved before synthesis.
-- Confirm `RAW_DATA_DIGEST.md` exists before `CEO_BRIEF.md`.
-- Confirm final claims are cited.
-- Confirm every factual claim has a Source ID.
-- Confirm evidence IDs use Sources `S1`, Quantitative signals `Q1`, Patterns `P1`, Contradictions `C1`, and Negative evidence `N1` conventions.
-- Confirm every CEO brief conclusion is supportable from `RAW_DATA_DIGEST.md`.
-- Confirm `CEO_BRIEF.md` includes Executive Read, Numbers That Matter, Category / Segment Structure, Signal Read, Confidence-Weighted Findings, Decision Implications, and Next Action.
-- Confirm `CEO_BRIEF.md` is not dominated by evidence-ID chains, methodology recap, or caveat-first language.
-- Confirm contradictions and open questions are preserved.
-- Confirm negative evidence is preserved.
-- Confirm weak methodology and blocked sources are visible.
-- Confirm `CHATGPT_PROJECT_DOC.md` excludes weak, temporary, or speculative findings.
-- Confirm prior finalized run outputs were not edited unless explicitly in scope.
-- Confirm irrelevant sections say `No material finding` rather than padding.
+- Brief, active profile, decision owner/audience, decision affected, scope, out-of-scope, target sources, and stop conditions are explicit.
+- Required source context is available before synthesis, or the run records the blocker instead of synthesizing.
+- Evidence lanes are independent enough to run in parallel and each lane has explicit `raw/[lane-name].md` ownership.
+- Subagents follow `docs/TOOL_MENU.md`, use no nested subagents, and use paid/conditional tools only when approved in the brief.
+- Parent Codex does not synthesize until required raw lane files exist or a caveated partial synthesis is explicitly approved.
+- Parent Codex writes the final artifacts in the order and shape required by `docs/RESEARCH_STANDARD.md`.
+- Citations, evidence IDs, confidence, contradictions, negative evidence, weak/blocked sources, and fact/inference/speculation separation pass `docs/RESEARCH_STANDARD.md`.
+- Prior finalized run outputs were not edited unless explicitly in scope.
+- Irrelevant sections say `No material finding` rather than padding.
 
 ## Stop Conditions
 

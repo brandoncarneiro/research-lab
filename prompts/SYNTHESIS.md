@@ -100,72 +100,28 @@ If the evidence is weak, say weak. Do not make the artifacts sound stronger than
 
 ## Evidence Rules
 
-- Cite every factual claim with a Source ID.
-- Use evidence IDs: Sources `S1`, `S2`, `S3`; Quantitative signals `Q1`, `Q2`, `Q3`; Patterns `P1`, `P2`, `P3`; Contradictions `C1`, `C2`, `C3`; Negative evidence `N1`, `N2`, `N3`.
-- Preserve source type: `primary`, `secondary`, `user-generated`, `scraped`, or `inferred`.
-- Preserve confidence: `High`, `Medium-high`, `Medium`, or `Low`.
-- Keep `FACT`, `INFERENCE`, and `SPECULATION` separated.
-- Do not invent numbers.
-- Do not smooth contradictions.
-- Preserve negative evidence.
-- Preserve blocked, weak, duplicate, and no-signal sources.
-- Do not hide weak methodology.
-- Do not inflate confidence.
-- Omit irrelevant sections by writing `No material finding`.
-- Do not fill gaps with generic commentary.
-- Do not treat internal project/profile docs as external proof.
+Use `docs/RESEARCH_STANDARD.md` as the canonical evidence standard. During synthesis, especially preserve:
+
+- Source IDs and final evidence IDs: `S#`, `Q#`, `P#`, `C#`, and `N#`.
+- Source type, confidence, and `FACT` / `INFERENCE` / `SPECULATION` separation.
+- Contradictions, negative evidence, blocked/weak/duplicate/no-signal sources, and weak methodology.
+- The rule that internal project/profile docs are context and hypotheses, not external proof.
+
+Do not invent numbers, smooth contradictions, inflate confidence, or fill gaps with generic commentary.
 
 ## RAW_DATA_DIGEST.md Requirements
 
-Use `templates/RAW_DATA_DIGEST.md`. Keep it evidence-led, not narrative-led.
-
-It must include:
-
-- collection scope
-- source index
-- method notes
-- normalized records
-- quantitative signals
-- raw user/market/source language
-- pattern library
-- domain/market/competitor observations when relevant
-- contradictions
-- negative evidence
-- blocked/weak sources
-- source-to-evidence map
-- confidence notes
-- candidate project context
+Use `templates/RAW_DATA_DIGEST.md`. Keep it evidence-led, not narrative-led. This is where detailed source mapping, normalized records, raw tables, contradictions, negative evidence, blocked/weak sources, and confidence notes belong.
 
 ## CEO_BRIEF.md Requirements
 
-Use `templates/CEO_BRIEF.md`. Target 1-2 dense pages. It can exceed one page only when the signal requires it.
-
-It must:
-
-- include an Executive Read with a direct 3-6 sentence read of the strongest signal
-- include Numbers That Matter: source count, normalized record count, benchmark/data point count, category/segment count, quantitative signal count, pattern count, contradiction count, gap/weak-evidence count, and run-specific key metrics
-- include Category / Segment Structure
-- include Signal Read: the interpretation of what is materially true at the research level
-- include Confidence-Weighted Findings labeled High, Medium, or Low, each with why it matters and a brief evidence reference if needed
-- include Decision Implications for the decision taxonomy defined in the run brief/profile, such as product, GTM, finance, positioning, validation, strategy, trust and risk, legal/policy, vendor selection, technical architecture, or operations where relevant
-- include one Next Action, not a menu
-- use evidence IDs sparingly as compact support, not as the main body of the brief
-- state confidence boundaries instead of leading with caveat dumps
+Use `templates/CEO_BRIEF.md`. Target 1-2 dense pages. It must include the template sections, one next action, and confidence boundaries. Use evidence IDs sparingly as compact support, not as the body of the brief.
 
 Every conclusion in `CEO_BRIEF.md` must be supportable from `RAW_DATA_DIGEST.md`. If a conclusion is not supported by digest evidence, remove it or label it as unsupported and do not recommend from it. Detailed evidence mapping belongs in `RAW_DATA_DIGEST.md`.
 
 ## CHATGPT_PROJECT_DOC.md Requirements
 
 Use `templates/CHATGPT_PROJECT_DOC.md`. Keep it compact enough for the durable context destination named in the active profile.
-
-It must include:
-
-- durable findings
-- caveats
-- decisions affected
-- do-not-overclaim rules
-- do-not-add-to-context rules
-- revisit trigger
 
 Do not include bulky raw evidence, raw dumps, weak findings, temporary observations, speculative ideas, or unsupported claims in `CHATGPT_PROJECT_DOC.md`.
 
@@ -176,14 +132,7 @@ Before accepting final artifacts:
 - [ ] Exactly three final artifacts exist by default: `CEO_BRIEF.md`, `RAW_DATA_DIGEST.md`, and `CHATGPT_PROJECT_DOC.md`
 - [ ] No duplicate summaries, alternate reports, or extra synthesis docs were created by default
 - [ ] `RAW_DATA_DIGEST.md` exists before `CEO_BRIEF.md`
-- [ ] Every factual claim has a Source ID
-- [ ] Every CEO brief conclusion is supportable from `RAW_DATA_DIGEST.md`
-- [ ] `CEO_BRIEF.md` includes Executive Read, Numbers That Matter, Category / Segment Structure, Signal Read, Confidence-Weighted Findings, Decision Implications, and Next Action
-- [ ] `CEO_BRIEF.md` is not dominated by evidence-ID chains, methodology recap, or caveat-first language
-- [ ] `FACT`, `INFERENCE`, and `SPECULATION` are separated
-- [ ] Contradictions and negative evidence are preserved
-- [ ] Blocked, weak, duplicate, and no-signal sources are visible
-- [ ] Confidence is proportional to evidence
+- [ ] Final artifacts pass `docs/RESEARCH_STANDARD.md`
 - [ ] Irrelevant sections say `No material finding`
 - [ ] `CHATGPT_PROJECT_DOC.md` excludes weak, temporary, or speculative findings
 - [ ] Accepted historical runs were not edited

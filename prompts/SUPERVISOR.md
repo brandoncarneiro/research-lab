@@ -105,19 +105,13 @@ Do not create `output/MASTER_RESEARCH.md` by default. It is legacy/optional only
 
 ## Required Final Artifacts
 
-Every standard run produces exactly these three final artifacts by default:
+Follow the canonical artifact contract in `docs/RESEARCH_STANDARD.md`. Every standard run produces exactly these three final artifacts by default:
 
 - `output/CEO_BRIEF.md`
 - `output/RAW_DATA_DIGEST.md`
 - `output/CHATGPT_PROJECT_DOC.md`
 
-No duplicate summaries, alternate reports, or extra synthesis docs are created by default.
-
-Artifact roles:
-
-- `RAW_DATA_DIGEST.md`: evidence layer. Not narrative. Contains collection scope, source index, method notes, normalized records, quantitative signals, raw language, patterns, domain/market/competitor observations when relevant, contradictions, negative evidence, blocked/weak sources, confidence notes, source-to-evidence mapping, and candidate project context.
-- `CEO_BRIEF.md`: decision-facing signal layer. Target 1-2 pages. Answers what was learned, what normalized data exists, what signal emerged, what patterns and categories matter, what findings carry high/medium/low confidence, what decision changes, and what happens next.
-- `CHATGPT_PROJECT_DOC.md`: durable project-context capsule. Not a report and not a raw dump. Contains only stable findings, durable caveats, source anchors, decisions affected, do-not-overclaim rules, do-not-add-to-context rules, and revisit trigger.
+Do not create duplicate summaries, alternate reports, or extra synthesis docs. `MASTER_RESEARCH.md` is legacy/optional only and not the default.
 
 ## Tool Posture
 
@@ -159,24 +153,13 @@ Avoid paid or conditional tools unless `00-brief.md` explicitly approves them.
 
 ## Evidence Standard
 
-Enforce `docs/RESEARCH_STANDARD.md`:
+Enforce `docs/RESEARCH_STANDARD.md` as canonical. Non-negotiables:
 
-- Cite every factual claim with a Source ID.
-- Use evidence IDs: Sources `S1`, `S2`, `S3`; Quantitative signals `Q1`, `Q2`, `Q3`; Patterns `P1`, `P2`, `P3`; Contradictions `C1`, `C2`, `C3`; Negative evidence `N1`, `N2`, `N3`.
-- Every CEO brief conclusion must be supportable from `RAW_DATA_DIGEST.md`.
-- Keep evidence density in `RAW_DATA_DIGEST.md`; use compact evidence references in `CEO_BRIEF.md` and avoid evidence-ID walls.
-- Separate `FACT`, `INFERENCE`, and `SPECULATION`.
-- Mark source type: `primary`, `secondary`, `user-generated`, `scraped`, or `inferred`.
-- Mark confidence: `High`, `Medium-high`, `Medium`, or `Low` in final artifacts.
-- Capture exact user language from reviews/comments when relevant.
-- Do not invent numbers.
-- Do not smooth contradictions.
-- Preserve negative evidence.
-- Preserve blocked, weak, duplicate, and no-signal sources.
-- Do not hide weak methodology.
-- Do not inflate confidence.
-- Omit irrelevant sections by writing `No material finding`.
-- Do not produce generic summaries.
+- Every factual claim has a Source ID, and final evidence IDs follow the `S#`, `Q#`, `P#`, `C#`, and `N#` convention.
+- `FACT`, `INFERENCE`, and `SPECULATION` stay separate, with source type and confidence preserved.
+- Contradictions, negative evidence, blocked/weak/duplicate/no-signal sources, and weak methodology stay visible.
+- `CEO_BRIEF.md` conclusions are supportable from `RAW_DATA_DIGEST.md`, with compact evidence references rather than evidence-ID walls.
+- Missing source context, invented numbers, generic summaries, or inflated confidence are stop/fix conditions.
 
 ## Completion Checklist
 
@@ -196,11 +179,7 @@ Enforce `docs/RESEARCH_STANDARD.md`:
 - Exactly three final artifacts exist in `output/`: `CEO_BRIEF.md`, `RAW_DATA_DIGEST.md`, and `CHATGPT_PROJECT_DOC.md`.
 - No duplicate summaries, alternate reports, or extra synthesis docs were created by default.
 - `RAW_DATA_DIGEST.md` exists before `CEO_BRIEF.md`.
-- Every factual claim in final artifacts is cited with a Source ID.
-- Every CEO brief conclusion is supportable from `RAW_DATA_DIGEST.md`.
-- Contradictions and open questions are explicitly preserved.
-- Negative evidence is explicitly preserved.
-- Weak methodology and blocked sources are visible.
+- Final artifacts pass `docs/RESEARCH_STANDARD.md`.
 - `CHATGPT_PROJECT_DOC.md` excludes weak, temporary, or speculative findings.
 - The decision brief says what decision should change.
 - Weak evidence is labeled weak, not disguised.

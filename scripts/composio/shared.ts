@@ -5,6 +5,7 @@ import { Composio, type ToolKitItem } from "@composio/core";
 export const LOCAL_DEV_DEFAULT_USER_ID = "research-lab-user";
 export const SESSION_STATE_FILENAME = ".composio-research-sessions.json";
 export const SESSION_STATE_PATH = resolve(process.cwd(), SESSION_STATE_FILENAME);
+export const SENSITIVE_COMPOSIO_OUTPUT_ENV = "RESEARCH_LAB_SHOW_SENSITIVE_COMPOSIO_OUTPUT";
 
 export type StoredResearchSession = {
   profileName: string;
@@ -55,6 +56,34 @@ export function createComposioClient(): Composio {
   return new Composio({
     apiKey: getRequiredApiKey(),
   });
+}
+
+export function shouldShowSensitiveComposioOutput(): boolean {
+  return process.env[SENSITIVE_COMPOSIO_OUTPUT_ENV] === "1";
+}
+
+export function maskSensitiveValue(value: string, visibleStart = 6, visibleEnd = 4): string {
+  const trimmed = value.trim();
+
+  if (trimmed.length === 0) {
+    return "(empty)";
+  }
+
+  if (trimmed.length <= visibleStart + visibleEnd + 3) {
+    return "[masked]";
+  }
+
+  return `${trimmed.slice(0, visibleStart)}...${trimmed.slice(-visibleEnd)}`;
+}
+
+export function maskMcpUrl(mcpUrl: string): string {
+  try {
+    const url = new URL(mcpUrl);
+    const hasPathOrQuery = url.pathname !== "/" || url.search.length > 0 || url.hash.length > 0;
+    return hasPathOrQuery ? `${url.origin}/...` : url.origin;
+  } catch {
+    return maskSensitiveValue(mcpUrl);
+  }
 }
 
 export function parseFilterArg(args: readonly string[]): string | undefined {

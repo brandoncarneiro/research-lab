@@ -1,8 +1,10 @@
 # Composio Session Build
 
-This repo can use Composio sessions as the runtime boundary for Codex research runs. A session controls which toolkits are available, which behavior tags are allowed, and which MCP URL Codex should connect to.
+This is optional advanced setup. Research Lab works without Composio when Codex has ordinary public web/search, browser/open URL, local file, and repo-write tools.
 
-For an early supervised run, the existing generic Composio MCP is acceptable if the supervisor prompt and run brief restrict tool usage to `docs/TOOL_MENU.md`. Research-scoped sessions are the preferred hardening path, not a mandatory blocker for the first run.
+Use Composio sessions only when you want a runtime boundary around research tools. A session controls which toolkits are available, which behavior tags are allowed, and which MCP URL Codex should connect to.
+
+For an early supervised run, no Composio setup is required. A broad generic Composio MCP is also acceptable for supervised experiments if the supervisor prompt and run brief restrict tool usage to `docs/TOOL_MENU.md`. Research-scoped sessions are a hardening path, not a first-run requirement.
 
 ## Why Sessions, Not Custom Toolkits
 
@@ -18,6 +20,8 @@ Do not create custom Composio tools or toolkits for this task. They are unnecess
 
 ## Environment
 
+Skip this section unless you are using the optional Composio scripts.
+
 Copy `.env.example` if you want a local shell file, but export the variables before running scripts:
 
 ```bash
@@ -31,6 +35,8 @@ Rules:
 - `COMPOSIO_USER_ID` defaults locally to `research-lab-user` if unset.
 - The scripts never print `COMPOSIO_API_KEY`.
 - `.env` and `.composio-research-sessions.json` are gitignored.
+- `.composio-research-sessions.json` contains raw session IDs and MCP URLs. Treat it as local-only.
+- Full MCP URLs are masked in terminal output unless `RESEARCH_LAB_SHOW_SENSITIVE_COMPOSIO_OUTPUT=1` is set in a private terminal.
 
 ## List Toolkits
 
@@ -98,6 +104,7 @@ Behavior:
 - Updates reused sessions with current profile config.
 - Creates replacement sessions if reuse fails.
 - Writes `.composio-research-sessions.json`.
+- Masks session IDs and MCP URLs in terminal output.
 
 The local session state file contains:
 
@@ -116,7 +123,19 @@ After sessions exist, run:
 npm run composio:print-codex-mcp-config
 ```
 
-The script prints copy-paste Codex commands:
+By default, the script prints masked commands so terminal logs do not casually expose MCP URLs:
+
+```bash
+codex mcp add research_lab_web --url "https://connect.composio.dev/..."
+```
+
+When you are ready to add the MCP servers locally, run it in a private terminal with explicit sensitive-output opt-in:
+
+```bash
+RESEARCH_LAB_SHOW_SENSITIVE_COMPOSIO_OUTPUT=1 npm run composio:print-codex-mcp-config
+```
+
+That prints copy-paste Codex commands:
 
 ```bash
 codex mcp add research_lab_web --url "<MCP_URL>"
@@ -124,13 +143,15 @@ codex mcp add research_lab_optional_paid_fallbacks --url "<MCP_URL>"
 codex mcp add research_lab_synthesis --url "<MCP_URL>"
 ```
 
-Current Codex CLI help in this environment also exposes `--bearer-token-env-var` for streamable HTTP MCP servers:
+Some Codex CLI versions expose `--bearer-token-env-var` for streamable HTTP MCP servers:
 
 ```bash
 codex mcp add research_lab_web --url "<MCP_URL>" --bearer-token-env-var COMPOSIO_API_KEY
 ```
 
 Composio docs may require an `x-api-key` header for some organizations. Do not paste or print the API key. If bearer auth does not work, confirm current Codex header support or use an approved local proxy before adding the MCP server.
+
+Do not paste full MCP URLs or session IDs into issues, documentation, chat, screenshots, or shared logs.
 
 ## Verify Codex Sees The Sessions
 

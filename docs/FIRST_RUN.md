@@ -53,10 +53,4 @@ research/runs/YYYY-MM-DD-topic/
 
 ## Required Final Artifacts
 
-Every standard run produces exactly these three final artifacts by default:
-
-- `output/CEO_BRIEF.md`
-- `output/RAW_DATA_DIGEST.md`
-- `output/CHATGPT_PROJECT_DOC.md`
-
-`output/MASTER_RESEARCH.md` is legacy/optional only and must not be created unless the project owner explicitly asks for an additional long-form artifact after the three required artifacts exist.
+Use the final artifact contract in `docs/RESEARCH_STANDARD.md`: exactly three final artifacts by default, raw evidence before synthesis, `RAW_DATA_DIGEST.md` before `CEO_BRIEF.md`, and no `MASTER_RESEARCH.md` unless the project owner explicitly requests the legacy optional long-form artifact.

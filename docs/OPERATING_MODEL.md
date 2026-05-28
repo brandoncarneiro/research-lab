@@ -111,11 +111,13 @@ Raw lane outputs and `extracted/` files are intermediate evidence only. They mus
 
 ## Final Artifact Contract
 
-- `RAW_DATA_DIGEST.md`: evidence layer. It uses Source IDs (`S1`), Quantitative Signal IDs (`Q1`), Pattern IDs (`P1`), Contradiction IDs (`C1`), and Negative Evidence IDs (`N1`) to hold normalized records, source mapping, contradictions, gaps, blocked/weak sources, negative evidence, and confidence notes.
-- `CEO_BRIEF.md`: decision-facing signal layer. Target 1-2 pages. It turns the digest into normalized counts, category/segment structure, signal read, confidence-weighted findings, decision implications, and one next action. Evidence IDs appear only as compact support for major claims.
-- `CHATGPT_PROJECT_DOC.md`: durable project-context capsule. It includes stable findings, durable caveats, source anchors, affected decisions, do-not-overclaim rules, do-not-add-to-context rules, and a revisit trigger. It is not a raw dump.
+The canonical artifact and evidence rules live in `docs/RESEARCH_STANDARD.md`. The operating model only fixes ownership and order:
 
-Every factual claim needs a Source ID. `FACT`, `INFERENCE`, and `SPECULATION` must stay separated. Contradictions, negative evidence, blocked/weak sources, and weak methodology must remain visible in the digest. The decision brief should state confidence boundaries without becoming caveat-led.
+1. `RAW_DATA_DIGEST.md`: parent-written evidence layer.
+2. `CEO_BRIEF.md`: parent-written decision-facing signal layer, created from `RAW_DATA_DIGEST.md`.
+3. `CHATGPT_PROJECT_DOC.md`: parent-written durable context capsule.
+
+Raw lane outputs and extraction notes stay intermediate. `MASTER_RESEARCH.md` stays legacy/optional and is never a substitute for the three required artifacts.
 
 ## Non-Goals
 

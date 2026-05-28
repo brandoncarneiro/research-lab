@@ -1,0 +1,58 @@
+name: Bug report
+description: Report a reproducible problem in Research Lab.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include secrets, private source documents, account exports, generated private research outputs, private URLs, or raw datasets.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What broke?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction
+      description: Use a minimal synthetic example whenever possible.
+      placeholder: |
+        1. Run ...
+        2. Open ...
+        3. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: |
+        OS:
+        Node:
+        npm:
+        Codex environment:
+  - type: checkboxes
+    id: sensitive_data_check
+    attributes:
+      label: Sensitive data check
+      options:
+        - label: I removed secrets, private URLs, private documents, account identifiers, and private research outputs.
+          required: true
+        - label: This is not a vulnerability report. Security-sensitive reports belong in GitHub private vulnerability reporting.
+          required: true

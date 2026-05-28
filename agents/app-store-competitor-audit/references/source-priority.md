@@ -18,4 +18,4 @@
 
 ## Negative Evidence
 
-Record when a competitor lacks visible pricing, trust language, privacy claims, doctrine/theology boundaries, risk language, screenshots, or review signals that the lane expected to find.
+Record when a competitor lacks visible pricing, trust language, privacy claims, policy boundaries, risk language, screenshots, or review signals that the lane expected to find.

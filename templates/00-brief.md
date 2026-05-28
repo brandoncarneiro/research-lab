@@ -114,50 +114,13 @@ Prioritize primary and direct evidence sources first.
 
 ## Tool Menu
 
-Allowed by default:
+Use `docs/TOOL_MENU.md` as the canonical allowed, conditional, optional paid, and banned tool policy.
 
-- Composio Search/browser or equivalent public web discovery
-- Browser/open URL inspection of public pages
-- Local/cheap extraction where possible
-- Robots.txt and sitemap preflight before crawl-style collection
-- Official APIs, official listings, and platform-owned/source-owned pages first
-- Local file/repo writing inside the run folder
+Default posture for this run:
 
-Conditional tools requiring explicit approval in this brief:
-
-- Cloudflare Browser Run `/crawl`, `/markdown`, or `/json` after capped POC and explicit API setup
-- Hosted browser/extractor tools with billable usage
-
-Optional paid fallbacks requiring explicit approval, API/account setup, caps, and stop conditions:
-
-- Firecrawl (optional paid fallback)
-- Apify (optional paid fallback)
-- SerpAPI (optional paid fallback)
-- Tavily (optional paid fallback)
-- Exa (optional paid fallback)
-
-Disallowed by default:
-
-- captcha bypass
-- paywall bypass
-- login bypass
-- stealth scraping
-- residential proxies
-- mass social scraping
-- LinkedIn scraping
-- scraping private or personal accounts
-- Gmail
-- Calendar
-- Slack
-- Supabase
-- Vercel
-- Stripe
-- production databases
-- billing tools
-- posting tools
-- sending tools
-- destructive tools
-- private account actions
+- Start with public web/search, browser/open URL inspection, official APIs/listings/source-owned pages, local/cheap extraction, robots.txt/sitemap preflight before crawl-style collection, and local file/repo writing inside the run folder.
+- Treat conditional hosted extraction and optional paid fallbacks as unavailable unless this brief explicitly approves the tool, reason, cap, API/account setup, and stop condition.
+- Do not use banned bypass, private-account, sending/posting, destructive, production, billing, or account-mutation tools.
 
 Approved exceptions for this run:
 
@@ -212,33 +175,13 @@ Extracted outputs are intermediate working notes only. They support `RAW_DATA_DI
 - `output/RAW_DATA_DIGEST.md`
 - `output/CHATGPT_PROJECT_DOC.md`
 
-Exactly these three final artifacts are required by default. Do not create duplicate summaries, alternate reports, or extra synthesis documents unless the project owner explicitly asks for them.
-
-`output/MASTER_RESEARCH.md` is legacy/optional only. Do not create it by default, and never treat it as the primary artifact.
+Use `docs/RESEARCH_STANDARD.md` for artifact roles and evidence rules. Exactly these three final artifacts are required by default. Do not create duplicate summaries, alternate reports, extra synthesis documents, or `output/MASTER_RESEARCH.md` unless the project owner explicitly asks for the legacy optional long-form artifact.
 
 Raw evidence must be saved before synthesis. `output/RAW_DATA_DIGEST.md` must be created before `output/CEO_BRIEF.md`. `output/CEO_BRIEF.md` must synthesize from the normalized data and evidence in `output/RAW_DATA_DIGEST.md`.
 
-## Final Artifact Roles
-
-- `RAW_DATA_DIGEST.md`: evidence layer. It contains collection scope, source index, method notes, normalized records, quantitative signals, raw language, patterns, domain/market/competitor observations when relevant, contradictions, negative evidence, blocked/weak sources, confidence notes, source-to-evidence mapping, and candidate project context.
-- `CEO_BRIEF.md`: decision-facing signal layer. Target 1-2 pages. It states what was learned, what normalized data exists, what signal emerged, what categories or segments matter, what findings carry high/medium/low confidence, what decision changes, and what happens next.
-- `CHATGPT_PROJECT_DOC.md`: durable project-context capsule. It is not a report and not a raw dump. It includes only stable findings, durable caveats, source anchors, decisions affected, do-not-overclaim rules, do-not-add-to-context rules, and a revisit trigger.
-
 ## Citation Rules
 
-- Cite every factual claim with a Source ID.
-- Assign every source a stable Source ID.
-- Use the evidence ID convention: Sources `S1`, `S2`, `S3`; Quantitative signals `Q1`, `Q2`, `Q3`; Patterns `P1`, `P2`, `P3`; Contradictions `C1`, `C2`, `C3`; Negative evidence `N1`, `N2`, `N3`.
-- Keep detailed evidence mapping, raw tables, and long evidence-ID chains in `RAW_DATA_DIGEST.md`; use compact references in `CEO_BRIEF.md`.
-- Preserve source type: `primary`, `secondary`, `user-generated`, `scraped`, or `inferred`.
-- Preserve confidence: `High`, `Medium-high`, `Medium`, or `Low` in final artifacts.
-- Separate `FACT`, `INFERENCE`, and `SPECULATION`.
-- Preserve contradictions and negative evidence.
-- Preserve blocked, weak, duplicate, and no-signal sources.
-- Do not hide weak methodology.
-- Do not inflate confidence.
-- Omit irrelevant sections by writing `No material finding`.
-- Do not treat internal project/profile source docs as external proof.
+Follow `docs/RESEARCH_STANDARD.md`. For this run, explicitly preserve Source IDs, final evidence IDs (`S#`, `Q#`, `P#`, `C#`, `N#`), source type, confidence, contradictions, negative evidence, blocked/weak/no-signal sources, and `FACT` / `INFERENCE` / `SPECULATION` separation. Internal project/profile source docs are context and hypotheses, not external proof.
 
 ## Stop Conditions
 
@@ -260,14 +203,7 @@ Before accepting final artifacts:
 - [ ] Exactly three final artifacts exist by default: `CEO_BRIEF.md`, `RAW_DATA_DIGEST.md`, and `CHATGPT_PROJECT_DOC.md`
 - [ ] No duplicate summaries, alternate reports, or extra synthesis docs were created by default
 - [ ] Every required raw lane file exists or an explicit blocker is recorded
-- [ ] Every factual claim has a Source ID
-- [ ] Every CEO brief conclusion is supportable from `RAW_DATA_DIGEST.md`
-- [ ] `CEO_BRIEF.md` includes Executive Read, Numbers That Matter, Category / Segment Structure, Signal Read, Confidence-Weighted Findings, Decision Implications, and Next Action
-- [ ] `CEO_BRIEF.md` is not dominated by evidence-ID chains, methodology recap, or caveat-first language
-- [ ] `FACT`, `INFERENCE`, and `SPECULATION` are separated
-- [ ] Contradictions and negative evidence are preserved
-- [ ] Weak methodology and blocked sources are visible
-- [ ] Confidence is proportional to evidence
+- [ ] Final artifacts pass `docs/RESEARCH_STANDARD.md`
 - [ ] `CHATGPT_PROJECT_DOC.md` excludes weak, temporary, or speculative findings
 
 ## Final Answer Requirements

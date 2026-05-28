@@ -1,0 +1,43 @@
+name: Documentation or onboarding
+description: Suggest an improvement to docs, prompts, templates, or examples.
+title: "[Docs]: "
+labels:
+  - documentation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep examples synthetic. Do not include private project context, private source excerpts, account exports, generated private research outputs, secrets, or private URLs.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - README
+        - Docs
+        - Prompts
+        - Templates
+        - Agents
+        - Profiles or examples
+        - Scripts
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is confusing or missing?
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested change
+      description: Share exact wording if helpful.
+  - type: checkboxes
+    id: public_data_check
+    attributes:
+      label: Public data check
+      options:
+        - label: I used only synthetic or public-ready examples.
+          required: true

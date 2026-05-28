@@ -153,13 +153,12 @@ Each lane must include:
 
 ## Citation Rules
 
-- Cite every factual claim with a Source ID.
-- Include source URL or local source reference.
-- Include a Source ID on every factual claim.
-- Mark source type: `primary`, `secondary`, `user-generated`, `scraped`, or `inferred`.
-- Mark confidence: `high`, `medium`, or `low`.
+Follow `docs/RESEARCH_STANDARD.md` for claim labeling and evidence rigor. For this lane:
+
+- Cite every factual claim with a lane-local Source ID and source URL or local source reference.
+- Mark source type and confidence.
 - Separate `FACT`, `INFERENCE`, and `SPECULATION`.
-- Capture exact user language from reviews/comments when relevant.
+- Capture exact user/source language when relevant.
 - Do not invent numbers, quotes, rankings, or source claims.
 
 ## What Not To Do

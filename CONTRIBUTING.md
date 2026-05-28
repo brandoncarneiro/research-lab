@@ -2,6 +2,14 @@
 
 Research Lab is a public, generic research operating system. Contributions should improve the reusable workflow without adding private project context, generated research outputs, account data, or restricted source material.
 
+## Good Contributions
+
+- clearer onboarding for new users
+- stronger prompt, agent, or template wording that preserves evidence rigor
+- stronger defaults around credentials, private sources, and generated artifacts
+- bug fixes for scripts and preflight checks
+- synthetic examples that make the workflow easier to understand
+
 ## Before Opening A Pull Request
 
 - Run `npm run typecheck`.
@@ -9,6 +17,7 @@ Research Lab is a public, generic research operating system. Contributions shoul
 - Run `git diff --check`.
 - Confirm no secrets, private source documents, local report exports, generated run folders, or raw datasets are included.
 - Keep examples synthetic and reusable across projects.
+- Explain any behavior change and include the commands you ran.
 
 ## Scope Rules
 
@@ -17,6 +26,14 @@ Research Lab is a public, generic research operating system. Contributions shoul
 - Do not add dependencies, frameworks, or orchestration layers unless the project owner explicitly approves them.
 - Preserve the parent supervisor, max 6 concurrent subagents, waves, no nested subagents, raw-lane-only writes, parent-only synthesis, and three-artifact output model.
 - Preserve evidence rigor: citations, source IDs, confidence, contradictions, negative evidence, blocked-source logging, and fact/inference/speculation separation.
+
+## Pull Request Guidelines
+
+- Keep changes focused.
+- Prefer small diffs over broad rewrites.
+- Do not include generated run output unless it belongs under a documented public example.
+- Do not add dependencies, paid-service assumptions, or new tool requirements without a clear rationale.
+- Use synthetic data in tests, examples, screenshots, and issue reproductions.
 
 ## Public Examples
 
@@ -32,4 +49,4 @@ Public examples must be synthetic or fully scrubbed. They must not contain:
 
 ## License
 
-No license has been declared yet. A license must be chosen before presenting this repo as reusable open-source software.
+By contributing, you agree that your contribution is licensed under the MIT License.

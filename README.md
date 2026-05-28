@@ -1,18 +1,29 @@
 # Research Lab
 
-Research Lab is a portable, file-based research operating system for Codex-assisted, source-grounded research. It is designed for public, reusable workflows across market, product, technical, finance, legal/policy, vendor, scientific/literature, competitive, and customer research.
+Research Lab is a portable, file-based research operating system for Codex-assisted, source-grounded research. It gives parent Codex a strict supervisor workflow, lets bounded Codex subagents collect parallel evidence lanes, and keeps synthesis grounded in files, citations, confidence labels, contradictions, and negative evidence.
 
-The core system is project-agnostic. A run brief defines the project, profile path, decision owner or audience, affected decision, source context, evidence lanes, output contract, and stop conditions. Parent Codex supervises the run. Codex subagents execute parallel evidence lanes. The filesystem is the operating surface; this repo does not use LangChain, LangGraph, CrewAI, AutoGen, or a custom orchestration framework.
+It is useful when a research question should change a product, market, technical, legal/policy, vendor, finance, competitive, scientific, or customer decision. It is not an agent framework, scraping product, or autonomous data pipeline. The filesystem is the operating surface; this repo does not use LangChain, LangGraph, CrewAI, AutoGen, or a custom orchestration framework.
 
-Every standard run produces exactly three final artifacts:
+## Who This Is For
 
-- `output/RAW_DATA_DIGEST.md`: evidence ledger with source IDs, normalized records, contradictions, negative evidence, blocked/weak sources, and confidence notes.
-- `output/CEO_BRIEF.md`: decision-facing brief for the named owner or audience.
-- `output/CHATGPT_PROJECT_DOC.md`: compact durable project context with stable findings and do-not-overclaim rules.
+Use Research Lab if you want:
 
-Generated run folders under `research/runs/` are local/private by default and are ignored by git. Track only synthetic examples that are deliberately scrubbed for public use.
+- Codex to run structured research without losing source trails.
+- Parallel evidence lanes with clear file ownership.
+- Decision-facing outputs that distinguish facts from inference.
+- A reusable profile system for different projects.
+- A default workflow that works without paid tools or private integrations.
 
-## Quick Start
+This repo assumes a human owner reviews the brief, controls tool access, and decides whether evidence is strong enough to act on.
+
+## Prerequisites
+
+- Node.js and npm.
+- Codex with access to this repo as its working directory.
+- Public web access when the research task needs current external sources.
+- Optional API accounts only if a brief explicitly approves advanced tooling such as Composio, Firecrawl, Apify, SerpAPI, Tavily, or Exa.
+
+Install and validate the repo:
 
 ```bash
 npm install
@@ -20,22 +31,95 @@ npm run typecheck
 npm run preflight
 ```
 
-Then choose a profile, create a run folder, copy `templates/00-brief.md`, fill the brief, and use `prompts/SUPERVISOR.md`.
+## Quick Start
+
+From the repo root, create a local run folder:
 
 ```bash
 mkdir -p research/runs/YYYY-MM-DD-topic/{raw,extracted,output}
 cp templates/00-brief.md research/runs/YYYY-MM-DD-topic/00-brief.md
 ```
 
-## Public Guardrails
+Fill `research/runs/YYYY-MM-DD-topic/00-brief.md` with the decision, scope, source context, evidence lanes, target sources, tool posture, output contract, and stop conditions.
 
-- Do not commit secrets, API keys, private source documents, account exports, screenshots, raw datasets, generated research runs, or local report exports.
-- Do not collect scraped private data, private account data, login-gated data, or data that requires bypassing access controls.
-- Do not bypass captcha, paywalls, logins, robots/platform restrictions, or use stealth scraping, residential proxies, mass social scraping, LinkedIn scraping, or private/personal account scraping.
-- Do not mutate production accounts, billing systems, databases, deployment systems, email/sending tools, posting tools, or other external systems during research.
-- Keep private source material in ignored local folders or pasted/summarized in a run brief only when the project owner deliberately provides it.
-- See `CONTRIBUTING.md` and `SECURITY.md` before accepting public contributions or reports.
-- No license has been declared yet; choose one before presenting the repo as reusable open-source software.
+Then paste this into Codex from the repo root:
+
+```text
+Use this repo as Research Lab.
+
+Read README.md, docs/RUNBOOK.md, docs/OPERATING_MODEL.md, docs/RESEARCH_STANDARD.md, docs/TOOL_MENU.md, templates/00-brief.md, prompts/SUPERVISOR.md, and the active profile.
+
+Run the research brief at research/runs/YYYY-MM-DD-topic/00-brief.md.
+
+Act as parent Codex. Define independent evidence lanes from the brief. Use at most 6 concurrent Codex subagents. If there are more than 6 lanes, run them in waves. Do not allow nested subagents. Each subagent may write only its assigned raw/[lane-name].md file using templates/lane-output.md.
+
+Use only the tools allowed by docs/TOOL_MENU.md and any stricter rules in the brief or profile. Do not use paid, private-account, production, posting, billing, email, database, or destructive tools unless the brief explicitly approves them.
+
+Do not synthesize until required raw lane files exist or their blockers are recorded. Parent Codex writes extracted/ and then exactly these final artifacts:
+- output/RAW_DATA_DIGEST.md
+- output/CEO_BRIEF.md
+- output/CHATGPT_PROJECT_DOC.md
+
+Cite factual claims with Source IDs. Separate FACT, INFERENCE, and SPECULATION. Preserve contradictions, negative evidence, weak sources, blocked sources, confidence limits, and open questions. Stop and report if required source context or tool access is missing.
+```
+
+Replace `YYYY-MM-DD-topic` with your run slug.
+
+## First Synthetic Example
+
+The completed example run under `examples/synthetic-roommate-chore-scan/` shows what a good small run looks like without exposing private context. It demonstrates:
+
+- `00-brief.md`
+- one raw lane output
+- extraction notes
+- `output/RAW_DATA_DIGEST.md`
+- `output/CEO_BRIEF.md`
+- `output/CHATGPT_PROJECT_DOC.md`
+
+To rerun the same shape locally, copy the example brief into an ignored run folder:
+
+```bash
+mkdir -p research/runs/YYYY-MM-DD-synthetic-roommate-chore-scan/{raw,extracted,output}
+cp examples/synthetic-roommate-chore-scan/00-brief.md research/runs/YYYY-MM-DD-synthetic-roommate-chore-scan/00-brief.md
+```
+
+Then paste the Quick Start Codex prompt above, replacing the run path with:
+
+```text
+research/runs/YYYY-MM-DD-synthetic-roommate-chore-scan/00-brief.md
+```
+
+The example is intentionally synthetic. Treat it as a format and workflow demonstration, not market evidence.
+
+## Expected Outputs
+
+Every standard run produces exactly three final artifacts:
+
+- `output/RAW_DATA_DIGEST.md`: evidence ledger with source IDs, method notes, normalized records, contradictions, negative evidence, blocked/weak sources, confidence notes, and source-to-evidence mapping.
+- `output/CEO_BRIEF.md`: decision-facing brief for the named owner or audience. It should be compact, cited, and supported by the digest.
+- `output/CHATGPT_PROJECT_DOC.md`: durable project-context capsule with stable findings, source anchors, caveats, do-not-overclaim rules, and revisit triggers.
+
+Raw lane files and `extracted/` files are intermediate evidence. `MASTER_RESEARCH.md` is legacy/optional only and must not be treated as the required or primary artifact.
+
+## Run Folder Shape
+
+```text
+research/runs/YYYY-MM-DD-topic/
+  00-brief.md
+  raw/
+    lane-name.md
+  extracted/
+    findings.md
+    contradictions.md
+    tables.md
+    open-questions.md
+  output/
+    RAW_DATA_DIGEST.md
+    CEO_BRIEF.md
+    CHATGPT_PROJECT_DOC.md
+```
+
+Generated run folders under `research/runs/` are local/private by default and are ignored by git. Track only synthetic examples that are deliberately scrubbed for public use.
 
 ## Project Profiles
 
@@ -58,26 +142,17 @@ Then update:
 
 Use `RESEARCH_PROFILE=my-project npm run preflight` to validate a non-default profile.
 
-## Core Workflow
+## Core Mechanics
 
-1. Open the repo root.
-2. Select the active project profile, defaulting to `profiles/example/`.
-3. Read the active profile, source-context rules, `docs/TOOL_MENU.md`, `docs/RESEARCH_STANDARD.md`, and `templates/00-brief.md`.
-4. Create a timestamped run folder under `research/runs/YYYY-MM-DD-topic/`.
-5. Copy `templates/00-brief.md` into the run folder and fill the run brief.
-6. Define independent evidence lanes and explicit file ownership.
-7. Spawn one Codex subagent per evidence lane, up to 6 concurrent subagents.
-8. If more than 6 lanes exist, run subagents in waves.
-9. Instruct child subagents not to spawn nested subagents.
-10. Restrict every lane to `docs/TOOL_MENU.md` and any stricter profile/brief rules.
-11. Each subagent writes only its assigned `raw/[lane-name].md` file.
-12. Parent Codex reads all required raw lane outputs.
-13. Parent Codex extracts findings, tables, contradictions, and open questions into `extracted/`.
-14. Parent Codex writes `output/RAW_DATA_DIGEST.md`.
-15. Parent Codex writes `output/CEO_BRIEF.md`.
-16. Parent Codex writes `output/CHATGPT_PROJECT_DOC.md`.
-
-Raw lane files and `extracted/` files are intermediate evidence. `MASTER_RESEARCH.md` is legacy/optional only and must not be treated as the required or primary artifact.
+- Parent Codex supervises the run.
+- Parent Codex may launch one Codex subagent per independent evidence lane.
+- Maximum concurrent subagents: 6.
+- Runs with more than 6 lanes use waves.
+- Child subagents must not spawn nested subagents.
+- Each subagent writes only its assigned `raw/[lane-name].md` file.
+- Parent Codex reads required raw lane outputs before synthesis.
+- Parent Codex writes `extracted/`, then `RAW_DATA_DIGEST.md`, then `CEO_BRIEF.md`, then `CHATGPT_PROJECT_DOC.md`.
+- Prior finalized run outputs are historical records and should not be rewritten unless explicitly in scope.
 
 ## Evidence Standard
 
@@ -91,40 +166,34 @@ Raw lane files and `extracted/` files are intermediate evidence. `MASTER_RESEARC
 - Do not synthesize before required raw lane evidence exists.
 - Do not write `CEO_BRIEF.md` before `RAW_DATA_DIGEST.md`.
 
-## Run Folder Shape
+## Public Boundaries
 
-```text
-research/runs/YYYY-MM-DD-topic/
-  00-brief.md
-  raw/
-    lane-name.md
-  extracted/
-    findings.md
-    contradictions.md
-    tables.md
-    open-questions.md
-  output/
-    RAW_DATA_DIGEST.md
-    CEO_BRIEF.md
-    CHATGPT_PROJECT_DOC.md
-```
+- Do not commit secrets, API keys, private source documents, account exports, screenshots, raw datasets, generated research runs, or local report exports.
+- Do not collect scraped private data, private account data, login-gated data, or data that requires bypassing access controls.
+- Do not bypass captcha, paywalls, logins, robots/platform restrictions, or use stealth scraping, residential proxies, mass social scraping, LinkedIn scraping, or private/personal account scraping.
+- Do not mutate production accounts, billing systems, databases, deployment systems, email/sending tools, posting tools, or other external systems during research.
+- Keep private source material in ignored local folders or pasted/summarized in a run brief only when the project owner deliberately provides it.
+- See `CONTRIBUTING.md`, `SECURITY.md`, and `LICENSE` before accepting public contributions or reports.
 
 ## Key Files
 
+- `docs/RUNBOOK.md`: standard run procedure.
 - `docs/OPERATING_MODEL.md`: parent/subagent workflow and file ownership.
 - `docs/RESEARCH_STANDARD.md`: citation, confidence, contradiction, and artifact rules.
 - `docs/TOOL_MENU.md`: allowed, conditional, optional paid, and banned tool policy.
-- `docs/RUNBOOK.md`: standard run procedure.
 - `docs/FIRST_RUN.md`: profile-driven first-run resolution.
 - `context/README.md`: private source-material handling.
 - `prompts/`: reusable Codex prompts for supervisor, subagent lane, synthesis, and agent-pack creation.
 - `templates/`: run brief, lane output, and final artifact templates.
 - `agents/`: reusable research-agent packs.
 - `scripts/preflight/`: portable readiness checks.
+- `examples/`: synthetic completed runs suitable for public inspection.
 
-## Composio Session Scripts
+## Optional Composio Setup
 
-The repo includes lightweight TypeScript scripts for discovering Composio toolkit slugs, inspecting toolkit tools, creating/reusing research-scoped sessions, and printing Codex MCP commands.
+Research Lab does not require Composio. The default workflow works with Codex, local files, public web inspection, and any tools explicitly approved in a run brief.
+
+The repo includes optional TypeScript helpers for advanced Composio users who want research-scoped MCP sessions:
 
 ```bash
 npm run composio:list-toolkits -- --filter search
@@ -133,4 +202,4 @@ npm run composio:create-research-sessions
 npm run composio:print-codex-mcp-config
 ```
 
-All scripts read `COMPOSIO_API_KEY` from the environment and never print it. Session IDs and MCP URLs are saved locally to `.composio-research-sessions.json`, which is gitignored.
+These scripts read `COMPOSIO_API_KEY` from the environment and never print it. MCP session IDs and URLs are treated as sensitive-ish local configuration, saved to `.composio-research-sessions.json`, and ignored by git. Do not commit or share them.

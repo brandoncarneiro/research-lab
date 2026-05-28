@@ -1,18 +1,20 @@
 # Composio MCP Setup
 
-Composio MCP is the research tool layer for research runs in this repo. Codex and Codex subagents must follow `docs/TOOL_MENU.md` rather than mixing unrelated local, account, paid, or production tools into research work.
+Composio MCP is optional advanced tooling for teams that want a stricter runtime boundary around Codex research tools.
+
+Research Lab does not require Composio. The default workflow works when parent Codex and bounded subagents have ordinary public web/search, browser/open URL, local file, and repo-write tools. In every setup, Codex and subagents must follow `docs/TOOL_MENU.md` rather than mixing unrelated local, account, paid, or production tools into research work.
 
 ## Policy
 
-- Composio MCP is the research tool layer.
+- Treat Composio MCP as optional hardening, not the default onboarding path.
 - Use `docs/TOOL_MENU.md` as the canonical tool policy.
-- The research menu should expose only research tools.
+- If Composio is enabled, the exposed menu should contain only research tools.
 - Default to public web/search, browser/open URL, local/cheap extraction, robots.txt/sitemap preflight, official APIs first, and file/repo writing for run artifacts.
 - Keep Firecrawl, Apify, SerpAPI, Tavily, and Exa as optional paid fallbacks only after explicit approval and API/account setup.
 - Keep Gmail, Calendar, Slack, Supabase, Vercel, Stripe, production databases, and sending/posting tools out unless explicitly needed.
 - Codex should not use tools outside the research menu.
-- The existing generic Composio MCP is acceptable for early supervised runs if the prompt and run brief restrict usage to `docs/TOOL_MENU.md`.
-- Use the TypeScript session-management scripts in this repo to create filtered research-scoped Composio sessions as the preferred hardening path.
+- A broad generic Composio MCP can be used for supervised experiments only when the prompt and run brief restrict usage to `docs/TOOL_MENU.md`.
+- Use the TypeScript session-management scripts in this repo to create filtered research-scoped Composio sessions when you need stronger tool isolation.
 - Do not create custom Composio tools or toolkits for research scoping unless current Composio SDK docs prove they are required.
 
 ## Research-Scoped Menu
@@ -47,6 +49,8 @@ These tools can be added only for a specific run when the project owner explicit
 
 ## Session Setup
 
+Skip this section if you are running Research Lab with ordinary Codex web/browser/file tools.
+
 Filtered MCP sessions are built with:
 
 ```bash
@@ -58,9 +62,11 @@ npm run composio:print-codex-mcp-config
 
 See `docs/COMPOSIO_SESSION_BUILD.md` for the full build and verification flow.
 
+The session scripts store raw session IDs and MCP URLs only in the local gitignored `.composio-research-sessions.json` file. Terminal output masks raw MCP URLs unless you explicitly opt in with `RESEARCH_LAB_SHOW_SENSITIVE_COMPOSIO_OUTPUT=1` in a private shell.
+
 ## Setup Expectations
 
-Before a run starts, confirm that Codex can access the tools allowed by `docs/TOOL_MENU.md` and needed for the brief. For an early supervised run, a generic Composio MCP can be used if prompts strictly prohibit paid, private-account, destructive, sending/posting, and bypass tools.
+Before a run starts, confirm that Codex can access the tools allowed by `docs/TOOL_MENU.md` and needed for the brief. That can be ordinary Codex tools, a narrow Composio MCP session, or a supervised generic Composio MCP constrained by the run prompt.
 
 If the needed tool is unavailable, record the blocker in the run folder and stop rather than substituting an unapproved tool.
 

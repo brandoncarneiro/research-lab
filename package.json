@@ -1,9 +1,24 @@
 {
   "name": "research-lab",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
   "description": "Portable file-based research operating system for source-grounded Codex workflows.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sommbc/research-lab.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sommbc/research-lab/issues"
+  },
+  "homepage": "https://github.com/sommbc/research-lab#readme",
+  "keywords": [
+    "codex",
+    "research",
+    "agents",
+    "source-grounded",
+    "workflow"
+  ],
   "scripts": {
     "composio:list-toolkits": "tsx scripts/composio/list-toolkits.ts",
     "composio:inspect-toolkit": "tsx scripts/composio/inspect-toolkit.ts",

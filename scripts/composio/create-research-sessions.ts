@@ -8,6 +8,8 @@ import {
   createComposioClient,
   getAvailableToolkits,
   getComposioUserId,
+  maskMcpUrl,
+  maskSensitiveValue,
   readSessionState,
   writeSessionState,
   type StoredResearchSession,
@@ -146,7 +148,7 @@ const profilesToProcess = RESEARCH_SESSION_PROFILES.filter((profile) => {
   return false;
 });
 
-console.log(`Creating/updating Composio research sessions for user "${userId}".`);
+console.log(`Creating/updating Composio research sessions for user "${maskSensitiveValue(userId)}".`);
 
 for (const profile of profilesToProcess) {
   const verifiedToolkitSlugs = profile.toolkitSlugs.filter((slug) => catalogSlugs.has(slug));
@@ -182,8 +184,8 @@ for (const profile of profilesToProcess) {
   nextProfiles.push(stored);
 
   console.log(`Operation: ${operation}`);
-  console.log(`Session ID: ${stored.sessionId}`);
-  console.log(`Session MCP URL: ${stored.mcpUrl}`);
+  console.log(`Session ID (masked): ${maskSensitiveValue(stored.sessionId)}`);
+  console.log(`Session MCP URL (masked): ${maskMcpUrl(stored.mcpUrl)}`);
   console.log(`Enabled toolkit slugs: ${verifiedToolkitSlugs.length ? verifiedToolkitSlugs.join(", ") : "(none)"}`);
   console.log(
     `Missing/unverified toolkit slugs: ${missingToolkitSlugs.length ? missingToolkitSlugs.join(", ") : "(none)"}`,
@@ -204,13 +206,14 @@ await writeSessionState({
 });
 
 console.log("");
-console.log("Wrote .composio-research-sessions.json. This file is local-only and gitignored.");
+console.log("Wrote .composio-research-sessions.json. This local-only gitignored file contains raw session IDs and MCP URLs.");
 
 function printSessionCreationPolicyNotice(): void {
-  console.log("Composio research session setup:");
-  console.log("- Generic Composio MCP is acceptable for the first supervised P0 run when prompts enforce docs/TOOL_MENU.md.");
-  console.log("- Research-scoped sessions are optional hardening, not a first-run blocker.");
+  console.log("Optional Composio research session setup:");
+  console.log("- Research Lab works without Composio when Codex has ordinary web/browser/file tools.");
+  console.log("- Research-scoped Composio sessions are advanced hardening, not a first-run blocker.");
   console.log("- Exact toolkit slugs must be discovered and verified before session creation.");
+  console.log("- Raw session IDs and MCP URLs are stored locally, but terminal output is masked by default.");
 }
 
 function printPlaceholderSlugWarning(
@@ -256,7 +259,7 @@ async function createOrUpdateSession(
       return { session, operation: "updated existing session" };
     } catch (error) {
       console.warn(
-        `Could not reuse session ${existing.sessionId}; creating a replacement. Reason: ${errorMessage(error)}`,
+        `Could not reuse session ${maskSensitiveValue(existing.sessionId)}; creating a replacement. Reason: ${errorMessage(error)}`,
       );
     }
   }
