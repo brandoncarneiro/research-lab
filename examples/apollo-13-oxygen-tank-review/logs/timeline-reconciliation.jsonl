@@ -1,0 +1,3 @@
+
+{"ts":"2026-05-28T03:35:08.121Z","runId":"run_e398be625787c92a","level":"info","event":"lane.started","laneId":"timeline-reconciliation"}
+{"ts":"2026-05-28T03:35:08.123Z","runId":"run_e398be625787c92a","level":"info","event":"lane.complete","laneId":"timeline-reconciliation","data":{"inputTokens":1709,"outputTokens":1709,"totalTokens":3418,"estimatedCostUsd":0,"localOnly":true}}

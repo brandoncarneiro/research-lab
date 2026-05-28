@@ -1,23 +1,26 @@
 # Examples
 
-This directory contains deliberately synthetic Research Lab runs prepared for public inspection.
-
-These examples demonstrate workflow shape, artifact quality, evidence labeling, and confidence discipline. They are not real market research, do not cite real companies, and should not be used as evidence for business decisions.
+Examples are checked, reproducible run folders. They should demonstrate the runtime, not marketing claims.
 
 ## Included Runs
 
 | Run | Purpose | Notes |
 | --- | --- | --- |
-| `synthetic-roommate-chore-scan/` | Shows a completed one-lane run from brief to raw evidence to final outputs. | All sources, quotes, counts, and company-like references are fictional and labeled synthetic. |
+| `apollo-13-oxygen-tank-review/` | Public-domain NASA incident-review example with four lanes, manifests, JSONL logs, metrics, synthesis, validation, and a status screenshot. | Uses local fixture execution from a checked source pack. No live web collection and no provider cost. |
 
-## How To Read An Example
+## Run The Example
 
-Start with `00-brief.md`, then inspect the assigned raw lane under `raw/`, the parent extraction notes under `extracted/`, and the final artifacts under `output/`.
+```bash
+npm run example:run
+npm run example:status
+```
 
-The important pattern is:
+Then inspect:
 
-1. The brief defines the decision, scope, evidence lane, tool posture, and stop conditions.
-2. The raw lane records source checks, blocked or weak sources, facts, inferences, speculation, contradictions, negative evidence, and confidence.
-3. The digest normalizes evidence into a source-indexed ledger.
-4. The brief compresses the ledger into a decision recommendation.
-5. The project doc keeps only stable durable context and explicit do-not-overclaim rules.
+```text
+examples/apollo-13-oxygen-tank-review/run.json
+examples/apollo-13-oxygen-tank-review/logs/run.jsonl
+examples/apollo-13-oxygen-tank-review/metrics/token-cost-summary.json
+examples/apollo-13-oxygen-tank-review/validation/report.json
+examples/apollo-13-oxygen-tank-review/screenshots/status.svg
+```

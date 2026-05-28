@@ -4,7 +4,6 @@ import { join, relative } from "node:path";
 const SCAN_ROOTS = [
   "README.md",
   "docs",
-  "prompts",
   "templates",
   "RESEARCH_BACKLOG.md",
 ] as const;

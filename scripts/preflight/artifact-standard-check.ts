@@ -28,8 +28,8 @@ const REQUIRED_STANDARD_TERMS = [
 const SCAN_ROOTS = [
   "README.md",
   "docs",
-  "prompts",
   "templates",
+  "src",
 ] as const;
 
 type CheckLevel = "warning" | "blocked";
@@ -75,7 +75,7 @@ async function verifyRequiredTemplates(): Promise<void> {
 function verifyRequiredOutputs(): void {
   for (const outputPath of REQUIRED_OUTPUT_PATHS) {
     if (!combinedText.includes(outputPath)) {
-      checks.push({ level: "blocked", message: `Required output path is not documented or prompted: ${outputPath}` });
+      checks.push({ level: "blocked", message: `Required output path is not documented in runtime contracts: ${outputPath}` });
     }
   }
 
@@ -96,21 +96,20 @@ async function verifyEvidenceStandard(): Promise<void> {
 
 function verifyMasterResearchIsLegacyOnly(): void {
   const matches = findMatches(/MASTER_RESEARCH\.md/);
-  const invalid = matches.filter((match) => !isLegacyMasterResearchLine(match));
 
-  if (invalid.length === 0) {
+  if (matches.length === 0) {
     return;
   }
 
   checks.push({
     level: "blocked",
-    message: `MASTER_RESEARCH.md appears outside legacy/optional language: ${formatMatches(invalid)}`,
+    message: `MASTER_RESEARCH.md should not appear in the runtime artifact contract: ${formatMatches(matches)}`,
   });
 }
 
 function verifyNoExtraDefaultFinalArtifacts(): void {
   const defaultFinalArtifactPattern = /\b(final|required)\b.*\b(MASTER_RESEARCH\.md|report\.md|synthesis\.md)\b/i;
-  const matches = findMatches(defaultFinalArtifactPattern).filter((match) => !isLegacyMasterResearchLine(match));
+  const matches = findMatches(defaultFinalArtifactPattern);
 
   if (matches.length === 0) {
     return;
@@ -199,14 +198,6 @@ function findMatches(pattern: RegExp): Match[] {
   }
 
   return matches;
-}
-
-function isLegacyMasterResearchLine(match: Match): boolean {
-  if (match.path === "templates/MASTER_RESEARCH.md") {
-    return true;
-  }
-
-  return /\b(legacy|optional|not required|not primary|not the required|only if explicitly requested|do not create|do not produce|not be created unless|not the default)\b/i.test(match.line);
 }
 
 function formatMatches(matches: Match[]): string {

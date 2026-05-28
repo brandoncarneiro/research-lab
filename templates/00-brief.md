@@ -73,9 +73,9 @@ Write exclusions aggressively. This prevents research sprawl.
 
 ## Evidence Lanes
 
-Each lane must be independent enough for a Codex subagent to run in parallel.
+Each lane must be independent enough to run as a bounded runtime unit.
 
-Default max concurrent subagents: 6. If more than 6 lanes exist, run subagents in waves.
+Set `--max-concurrency` for runtime execution. Keep it low enough that source access, logs, and review stay inspectable.
 
 | Lane | Mission | Lane question | Target sources | Required output file | Evidence threshold |
 | --- | --- | --- | --- | --- | --- |
@@ -85,12 +85,13 @@ Default max concurrent subagents: 6. If more than 6 lanes exist, run subagents i
 
 | Path | Owner | Rule |
 | --- | --- | --- |
-| `00-brief.md` | Parent Codex | Parent creates/updates the brief. |
-| `raw/{lane-name}.md` | Assigned subagent | Subagent writes only this file. |
-| `extracted/` | Parent Codex | Parent writes after required raw lane files exist. |
-| `output/` | Parent Codex | Parent writes final artifacts only after raw evidence exists. |
+| `00-brief.md` | Operator | Defines the research decision, scope, lanes, and stop conditions. |
+| `lanes/{lane-name}.json` | Runtime / operator | Defines executor, provider/model label, retry state, and validation state. |
+| `raw/{lane-name}.md` | Assigned lane executor | The lane owns only this raw file. |
+| `extracted/` | Runtime synthesis | Written after required raw lane files exist. |
+| `output/` | Runtime synthesis | Final artifacts written only after raw evidence exists. |
 
-Child subagents must not spawn nested subagents.
+Lane executors must not mutate files outside their assigned raw path unless the brief explicitly scopes a command executor to do so.
 
 ## Target Sources
 
@@ -131,7 +132,7 @@ Approved exceptions for this run:
 Set limits so the run does not become endless.
 
 - Maximum lanes: {number}
-- Maximum concurrent subagents: 6 unless the project owner explicitly lowers it
+- Maximum concurrent lanes: {number}
 - Maximum search/tool iterations per lane: {number}
 - Minimum useful sources per lane: {number}
 - Maximum runtime expectation: {rough bound, if useful}
@@ -175,7 +176,7 @@ Extracted outputs are intermediate working notes only. They support `RAW_DATA_DI
 - `output/RAW_DATA_DIGEST.md`
 - `output/CHATGPT_PROJECT_DOC.md`
 
-Use `docs/RESEARCH_STANDARD.md` for artifact roles and evidence rules. Exactly these three final artifacts are required by default. Do not create duplicate summaries, alternate reports, extra synthesis documents, or `output/MASTER_RESEARCH.md` unless the project owner explicitly asks for the legacy optional long-form artifact.
+Use `docs/RESEARCH_STANDARD.md` for artifact roles and evidence rules. Exactly these three final artifacts are required. Do not create duplicate summaries, alternate reports, or extra synthesis documents.
 
 Raw evidence must be saved before synthesis. `output/RAW_DATA_DIGEST.md` must be created before `output/CEO_BRIEF.md`. `output/CEO_BRIEF.md` must synthesize from the normalized data and evidence in `output/RAW_DATA_DIGEST.md`.
 
@@ -202,6 +203,7 @@ Before accepting final artifacts:
 - [ ] Active project profile was read
 - [ ] Exactly three final artifacts exist by default: `CEO_BRIEF.md`, `RAW_DATA_DIGEST.md`, and `CHATGPT_PROJECT_DOC.md`
 - [ ] No duplicate summaries, alternate reports, or extra synthesis docs were created by default
+- [ ] `run.json`, `lanes/*.json`, `logs/*.jsonl`, `metrics/token-cost-summary.json`, and `validation/report.json` exist
 - [ ] Every required raw lane file exists or an explicit blocker is recorded
 - [ ] Final artifacts pass `docs/RESEARCH_STANDARD.md`
 - [ ] `CHATGPT_PROJECT_DOC.md` excludes weak, temporary, or speculative findings

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "runId": "run_e398be625787c92a",
+  "laneId": "timeline-reconciliation",
+  "manifestPath": "lanes/timeline-reconciliation.json",
+  "rawPath": "raw/timeline-reconciliation.md",
+  "required": true,
+  "title": "Timeline reconciliation",
+  "mission": "Reconcile planned mission, accident timing, crew report, and recovery endpoint",
+  "question": "What sequence does the source pack support?",
+  "targetSources": "S2 mission report, S3 transcript, S4 press kit",
+  "evidenceThreshold": "At least three dated or mission-elapsed-time facts",
+  "provider": "local",
+  "model": "fixture",
+  "executor": {
+    "type": "fixture",
+    "inputPath": "source-pack/lane-fixtures/timeline-reconciliation.md"
+  },
+  "status": "complete",
+  "createdAt": "2026-05-28T03:23:14.805Z",
+  "updatedAt": "2026-05-28T03:35:08.123Z",
+  "retries": 0,
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "complete",
+      "startedAt": "2026-05-28T03:35:08.121Z",
+      "completedAt": "2026-05-28T03:35:08.123Z",
+      "usage": {
+        "inputTokens": 1709,
+        "outputTokens": 1709,
+        "totalTokens": 3418,
+        "estimatedCostUsd": 0,
+        "localOnly": true
+      }
+    }
+  ],
+  "validation": {
+    "status": "passed",
+    "checkedAt": "2026-05-28T03:35:08.123Z",
+    "issueCount": 0
+  },
+  "usage": {
+    "inputTokens": 1709,
+    "outputTokens": 1709,
+    "totalTokens": 3418,
+    "estimatedCostUsd": 0,
+    "localOnly": true
+  },
+  "startedAt": "2026-05-28T03:35:08.121Z",
+  "completedAt": "2026-05-28T03:35:08.123Z"
+}

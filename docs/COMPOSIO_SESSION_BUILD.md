@@ -4,7 +4,7 @@ This is optional advanced setup. Research Lab works without Composio when Codex 
 
 Use Composio sessions only when you want a runtime boundary around research tools. A session controls which toolkits are available, which behavior tags are allowed, and which MCP URL Codex should connect to.
 
-For an early supervised run, no Composio setup is required. A broad generic Composio MCP is also acceptable for supervised experiments if the supervisor prompt and run brief restrict tool usage to `docs/TOOL_MENU.md`. Research-scoped sessions are a hardening path, not a first-run requirement.
+For an early supervised run, no Composio setup is required. A broad generic Composio MCP is also acceptable for supervised experiments if the run brief restricts tool usage to `docs/TOOL_MENU.md`. Research-scoped sessions are a hardening path, not a first-run requirement.
 
 ## Why Sessions, Not Custom Toolkits
 
@@ -161,7 +161,7 @@ After adding the MCP servers:
 codex mcp list
 ```
 
-Then start a Codex session and verify the available MCP servers/tools are limited to the research sessions. If a broad Composio server is also enabled globally, either disable it before running research or keep it prompt-scoped to `docs/TOOL_MENU.md` for the supervised run.
+Then start a Codex session and verify the available MCP servers/tools are limited to the research sessions. If a broad Composio server is also enabled globally, either disable it before running research or keep collection scoped to `docs/TOOL_MENU.md` for the supervised run.
 
 ## What Not To Connect
 
@@ -251,4 +251,4 @@ If Codex sees too many tools:
 2. Keep `tags.enable = ["readOnlyHint"]` for read-only research sessions.
 3. Keep `tags.disable = ["destructiveHint"]`.
 4. Avoid `preload.tools = "all"` unless the verified toolkit is small and intentionally scoped.
-5. Disable any global broad Composio MCP server before starting research, or use strict prompt/tool policy only for the supervised first P0 run.
+5. Disable any global broad Composio MCP server before starting research, or use strict run-brief tool policy only for the supervised first P0 run.

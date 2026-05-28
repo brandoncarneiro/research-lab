@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "runId": "run_e398be625787c92a",
+  "slug": "apollo-13-oxygen-tank-review",
+  "title": "Apollo 13 oxygen tank failure: source-bounded incident review",
+  "runDir": ".",
+  "profilePath": "profiles/example/PROFILE.md",
+  "status": "validated",
+  "executionMode": "local",
+  "sourcePackHash": "39e7b485bdee6e3237c7d277f5b3ce5a02397fe284b01547876b9be970eb453d",
+  "createdAt": "2026-05-28T03:23:14.805Z",
+  "updatedAt": "2026-05-28T03:35:08.438Z",
+  "maxConcurrency": 2,
+  "lanes": [
+    {
+      "laneId": "timeline-reconciliation",
+      "manifestPath": "lanes/timeline-reconciliation.json",
+      "rawPath": "raw/timeline-reconciliation.md",
+      "required": true
+    },
+    {
+      "laneId": "failure-chain",
+      "manifestPath": "lanes/failure-chain.json",
+      "rawPath": "raw/failure-chain.md",
+      "required": true
+    },
+    {
+      "laneId": "operational-recovery",
+      "manifestPath": "lanes/operational-recovery.json",
+      "rawPath": "raw/operational-recovery.md",
+      "required": true
+    },
+    {
+      "laneId": "mission-objective-counterevidence",
+      "manifestPath": "lanes/mission-objective-counterevidence.json",
+      "rawPath": "raw/mission-objective-counterevidence.md",
+      "required": true
+    }
+  ],
+  "artifacts": {
+    "brief": "00-brief.md",
+    "extracted": [
+      "extracted/findings.md",
+      "extracted/contradictions.md",
+      "extracted/tables.md",
+      "extracted/open-questions.md"
+    ],
+    "output": [
+      "output/RAW_DATA_DIGEST.md",
+      "output/CEO_BRIEF.md",
+      "output/CHATGPT_PROJECT_DOC.md"
+    ],
+    "logs": [
+      "logs/run.jsonl",
+      "logs/timeline-reconciliation.jsonl",
+      "logs/failure-chain.jsonl",
+      "logs/operational-recovery.jsonl",
+      "logs/mission-objective-counterevidence.jsonl"
+    ],
+    "metrics": "metrics/token-cost-summary.json",
+    "validation": "validation/report.json"
+  },
+  "totals": {
+    "inputTokens": 6712,
+    "outputTokens": 6712,
+    "totalTokens": 13424,
+    "estimatedCostUsd": 0,
+    "localOnly": true
+  },
+  "startedAt": "2026-05-28T03:35:08.120Z",
+  "completedAt": "2026-05-28T03:35:08.279Z"
+}

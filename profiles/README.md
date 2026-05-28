@@ -1,8 +1,8 @@
 # Project Profiles
 
-Profiles hold project-specific context for the research operating system.
+Profiles hold project-specific context for the research runtime.
 
-Core docs, prompts, and templates define how research runs work. A profile defines what a run is about:
+Core docs, templates, and TypeScript runtime define how research runs work. A profile defines what a run is about:
 
 - project name
 - profile path
@@ -12,9 +12,8 @@ Core docs, prompts, and templates define how research runs work. A profile defin
 - default first run
 - project-specific decision gates
 - project-specific backlog
-- optional prompt overlay
 - project-specific tool/session defaults
-- relevant agent packs and lane defaults
+- relevant lane defaults
 
 If a run does not specify a profile, use `profiles/example/`.
 

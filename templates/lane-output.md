@@ -30,6 +30,17 @@ Raw lane output is intermediate evidence only. It is not a final artifact, not a
 - Overall confidence: `{high / medium / low}`
 - Blockers: {none or explicit blocker}
 
+## Runtime
+
+- Run ID: `{run_id}`
+- Lane manifest: `lanes/{lane-name}.json`
+- Lane log: `logs/{lane-name}.jsonl`
+- Provider: `{local / external / provider-name}`
+- Model: `{fixture / manual / model-name}`
+- Estimated input tokens: `{number}`
+- Estimated output tokens: `{number}`
+- Estimated cost USD: `{number}`
+
 ## Tools Used
 
 | Tool | Purpose | Notes |
@@ -58,7 +69,7 @@ Record blocked sources and the exact reason. Do not bypass restrictions.
 | --- | --- | --- | --- | --- | --- | --- |
 | S1 | {source name} | {url or local reference} | {primary/secondary/user-generated/scraped/inferred} | {useful/weak/no relevant evidence/blocked} | {high/medium/low} | {what it contributed or why it failed} |
 
-Use stable lane-local Source IDs (`S1`, `S2`, `S3`). The parent synthesis may reconcile duplicate sources across lanes in `RAW_DATA_DIGEST.md`.
+Use stable lane-local Source IDs (`S1`, `S2`, `S3`). Runtime synthesis reconciles duplicate lane-local sources across lanes in `RAW_DATA_DIGEST.md`.
 
 ## Quantitative Signals
 
@@ -151,6 +162,8 @@ If this lane is correct, `{project-name}` should:
 ## Completion Checklist
 
 - [ ] Lane question answered or blocker recorded
+- [ ] Lane manifest exists
+- [ ] Lane log exists
 - [ ] Sources checked listed, including weak/no-signal sources
 - [ ] Blocked sources listed with reasons
 - [ ] Key evidence cited

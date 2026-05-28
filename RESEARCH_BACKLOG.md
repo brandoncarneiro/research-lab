@@ -1,6 +1,6 @@
 # Research Backlog
 
-This root backlog is intentionally generic. Each project profile owns its prioritized backlog so the core research operating system does not force every run to be about one project.
+This root backlog is intentionally generic. Each project profile owns its prioritized backlog so the runtime does not force every run to be about one project.
 
 ## Default Backlog
 

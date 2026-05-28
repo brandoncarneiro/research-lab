@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "runId": "run_e398be625787c92a",
+  "laneId": "operational-recovery",
+  "manifestPath": "lanes/operational-recovery.json",
+  "rawPath": "raw/operational-recovery.md",
+  "required": true,
+  "title": "Operational recovery",
+  "mission": "Extract recovery constraints and actions without turning success into root-cause absolution",
+  "question": "What operational moves made crew return plausible?",
+  "targetSources": "S2 mission report, S3 transcript",
+  "evidenceThreshold": "At least three cited recovery facts and one negative-evidence limit",
+  "provider": "local",
+  "model": "fixture",
+  "executor": {
+    "type": "fixture",
+    "inputPath": "source-pack/lane-fixtures/operational-recovery.md"
+  },
+  "status": "complete",
+  "createdAt": "2026-05-28T03:23:14.805Z",
+  "updatedAt": "2026-05-28T03:35:08.124Z",
+  "retries": 0,
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "complete",
+      "startedAt": "2026-05-28T03:35:08.124Z",
+      "completedAt": "2026-05-28T03:35:08.124Z",
+      "usage": {
+        "inputTokens": 1677,
+        "outputTokens": 1677,
+        "totalTokens": 3354,
+        "estimatedCostUsd": 0,
+        "localOnly": true
+      }
+    }
+  ],
+  "validation": {
+    "status": "passed",
+    "checkedAt": "2026-05-28T03:35:08.124Z",
+    "issueCount": 0
+  },
+  "usage": {
+    "inputTokens": 1677,
+    "outputTokens": 1677,
+    "totalTokens": 3354,
+    "estimatedCostUsd": 0,
+    "localOnly": true
+  },
+  "startedAt": "2026-05-28T03:35:08.123Z",
+  "completedAt": "2026-05-28T03:35:08.124Z"
+}

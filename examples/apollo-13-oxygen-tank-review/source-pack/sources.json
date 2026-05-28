@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Report of Apollo 13 Review Board",
+      "publisher": "NASA",
+      "url": "https://www.nasa.gov/wp-content/uploads/static/history/afj/ap13fj/pdf/report-of-a13-review-board-19700615-19700076776.pdf",
+      "type": "primary",
+      "rights": "NASA / U.S. Government public domain"
+    },
+    {
+      "id": "S2",
+      "title": "Apollo 13 Mission Report",
+      "publisher": "NASA",
+      "url": "https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19710003598.pdf",
+      "type": "primary",
+      "rights": "NASA / U.S. Government public domain"
+    },
+    {
+      "id": "S3",
+      "title": "Apollo 13 Technical Air-To-Ground Voice Transcription",
+      "publisher": "NASA Technical Reports Server",
+      "url": "https://ntrs.nasa.gov/citations/20160014370",
+      "type": "primary",
+      "rights": "NASA / U.S. Government public domain; public use permitted"
+    },
+    {
+      "id": "S4",
+      "title": "Apollo 13 Press Kit",
+      "publisher": "NASA",
+      "url": "https://www.nasa.gov/wp-content/uploads/static/history/afj/ap13fj/pdf/a13-press-kit.pdf",
+      "type": "primary",
+      "rights": "NASA / U.S. Government public domain"
+    }
+  ]
+}

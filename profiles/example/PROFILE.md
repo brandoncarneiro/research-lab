@@ -33,7 +33,6 @@ If a research idea does not change one of these decisions, it waits.
 - First run: `profiles/example/FIRST_RUN.md`
 - Backlog: `profiles/example/RESEARCH_BACKLOG.md`
 - Source context: `profiles/example/SOURCE_CONTEXT.md`
-- Prompt overlay: `profiles/example/PROMPT_OVERLAY.md`
 - Tooling/session defaults: `profiles/example/TOOLING.md`
 
 ## Internal Context Rule

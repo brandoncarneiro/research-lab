@@ -2,7 +2,7 @@
   "name": "research-lab",
   "version": "0.1.0",
   "type": "module",
-  "description": "Portable file-based research operating system for source-grounded Codex workflows.",
+  "description": "Minimal filesystem-first research runner with lane execution, evidence artifacts, logs, and validation.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -13,13 +13,21 @@
   },
   "homepage": "https://github.com/sommbc/research-lab#readme",
   "keywords": [
-    "codex",
     "research",
-    "agents",
+    "orchestration",
     "source-grounded",
-    "workflow"
+    "runtime"
   ],
+  "bin": {
+    "research-lab": "dist/src/cli.js"
+  },
   "scripts": {
+    "build": "tsc",
+    "test": "node --import tsx --test \"tests/**/*.test.ts\"",
+    "research-lab": "tsx src/cli.ts",
+    "example:run": "tsx src/cli.ts run examples/apollo-13-oxygen-tank-review --force --max-concurrency 2 && tsx src/cli.ts synthesize examples/apollo-13-oxygen-tank-review --force && tsx src/cli.ts validate examples/apollo-13-oxygen-tank-review && tsx scripts/examples/render-status-screenshot.ts examples/apollo-13-oxygen-tank-review",
+    "example:screenshot": "tsx scripts/examples/render-status-screenshot.ts examples/apollo-13-oxygen-tank-review",
+    "example:status": "tsx src/cli.ts status examples/apollo-13-oxygen-tank-review",
     "composio:list-toolkits": "tsx scripts/composio/list-toolkits.ts",
     "composio:inspect-toolkit": "tsx scripts/composio/inspect-toolkit.ts",
     "composio:create-research-sessions": "tsx scripts/composio/create-research-sessions.ts",

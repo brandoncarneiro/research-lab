@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "runId": "run_e398be625787c92a",
+  "laneId": "mission-objective-counterevidence",
+  "manifestPath": "lanes/mission-objective-counterevidence.json",
+  "rawPath": "raw/mission-objective-counterevidence.md",
+  "required": true,
+  "title": "Mission objective counterevidence",
+  "mission": "Compare planned lunar mission with actual abort/recovery outcome",
+  "question": "What did the mission cease to prove after the oxygen failure?",
+  "targetSources": "S4 press kit, S1 review board, S2 mission report",
+  "evidenceThreshold": "At least two planned-objective facts and one actual-outcome contradiction",
+  "provider": "local",
+  "model": "fixture",
+  "executor": {
+    "type": "fixture",
+    "inputPath": "source-pack/lane-fixtures/mission-objective-counterevidence.md"
+  },
+  "status": "complete",
+  "createdAt": "2026-05-28T03:23:14.805Z",
+  "updatedAt": "2026-05-28T03:35:08.125Z",
+  "retries": 0,
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "complete",
+      "startedAt": "2026-05-28T03:35:08.124Z",
+      "completedAt": "2026-05-28T03:35:08.125Z",
+      "usage": {
+        "inputTokens": 1628,
+        "outputTokens": 1628,
+        "totalTokens": 3256,
+        "estimatedCostUsd": 0,
+        "localOnly": true
+      }
+    }
+  ],
+  "validation": {
+    "status": "passed",
+    "checkedAt": "2026-05-28T03:35:08.125Z",
+    "issueCount": 0
+  },
+  "usage": {
+    "inputTokens": 1628,
+    "outputTokens": 1628,
+    "totalTokens": 3256,
+    "estimatedCostUsd": 0,
+    "localOnly": true
+  },
+  "startedAt": "2026-05-28T03:35:08.123Z",
+  "completedAt": "2026-05-28T03:35:08.125Z"
+}

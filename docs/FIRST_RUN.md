@@ -1,56 +1,19 @@
-# First Run Resolution
+# First Run
 
-This core file explains how a first run is selected. It is not a project-specific research brief.
+The first run is a normal run folder with a brief, lane manifests, logs, metrics, outputs, and validation.
 
-## Default Profile
+Use the checked public example:
 
-If no profile is specified, use the current/default profile:
-
-```text
-profiles/example/PROFILE.md
+```bash
+npm run example:run
 ```
 
-The included example profile first run is:
+Then inspect:
 
-```text
-profiles/example/FIRST_RUN.md
+```bash
+npm run example:status
 ```
 
-## Profile Requirement
+For a project-specific first run, copy `templates/00-brief.md` into an ignored folder under `research/runs/`, create lane manifests, and run the CLI commands in `docs/RUNBOOK.md`.
 
-A first run must come from an active profile or an explicit run brief. The profile supplies:
-
-- project name
-- profile path
-- decision owner / audience
-- decision affected
-- source context
-- evidence lanes
-- output contract
-- stop conditions
-- profile-specific decision gates
-
-The generic operating system supplies the workflow, evidence standard, tool policy, subagent mechanics, run folder contract, and artifact standard.
-
-## First-Run Rules
-
-- Do not invent a first run when the active profile already defines one.
-- Do not substitute a different first run unless the project owner explicitly changes the priority.
-- Do not start synthesis until required source context is available and required raw lane files exist.
-- Do not use internal project docs as external proof.
-- Do not create duplicate summaries, alternate reports, or extra final artifacts by default.
-- Do not move, rewrite, or normalize prior finalized research runs unless explicitly in scope.
-
-## Run Folder Shape
-
-```text
-research/runs/YYYY-MM-DD-topic/
-  00-brief.md
-  raw/
-  extracted/
-  output/
-```
-
-## Required Final Artifacts
-
-Use the final artifact contract in `docs/RESEARCH_STANDARD.md`: exactly three final artifacts by default, raw evidence before synthesis, `RAW_DATA_DIGEST.md` before `CEO_BRIEF.md`, and no `MASTER_RESEARCH.md` unless the project owner explicitly requests the legacy optional long-form artifact.
+Profile files can supply context and backlog priorities, but profile claims are not external proof. Final claims still need source IDs from raw lane evidence.

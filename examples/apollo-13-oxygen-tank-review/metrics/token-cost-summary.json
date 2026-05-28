@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "runId": "run_e398be625787c92a",
+  "generatedAt": "2026-05-28T03:35:08.125Z",
+  "executionMode": "local",
+  "lanes": [
+    {
+      "laneId": "failure-chain",
+      "provider": "local",
+      "model": "fixture",
+      "localOnly": true,
+      "inputTokens": 1698,
+      "outputTokens": 1698,
+      "totalTokens": 3396,
+      "estimatedCostUsd": 0
+    },
+    {
+      "laneId": "mission-objective-counterevidence",
+      "provider": "local",
+      "model": "fixture",
+      "localOnly": true,
+      "inputTokens": 1628,
+      "outputTokens": 1628,
+      "totalTokens": 3256,
+      "estimatedCostUsd": 0
+    },
+    {
+      "laneId": "operational-recovery",
+      "provider": "local",
+      "model": "fixture",
+      "localOnly": true,
+      "inputTokens": 1677,
+      "outputTokens": 1677,
+      "totalTokens": 3354,
+      "estimatedCostUsd": 0
+    },
+    {
+      "laneId": "timeline-reconciliation",
+      "provider": "local",
+      "model": "fixture",
+      "localOnly": true,
+      "inputTokens": 1709,
+      "outputTokens": 1709,
+      "totalTokens": 3418,
+      "estimatedCostUsd": 0
+    }
+  ],
+  "totals": {
+    "inputTokens": 6712,
+    "outputTokens": 6712,
+    "totalTokens": 13424,
+    "estimatedCostUsd": 0,
+    "localOnly": true
+  }
+}

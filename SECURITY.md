@@ -10,7 +10,7 @@ Use GitHub private vulnerability reporting for this repository:
 
 Include:
 
-- affected files, scripts, prompts, or docs
+- affected files, scripts, runtime artifacts, or docs
 - steps to reproduce or a minimal synthetic example
 - impact and who could be affected
 - whether any token, credential, private URL, private source, or generated research output may be exposed

@@ -32,8 +32,6 @@ Every standard research run must produce exactly three final artifacts under `ou
 
 Raw lane outputs under `raw/` and extraction files under `extracted/` are intermediate evidence only. Do not create duplicate summaries, alternate reports, or extra synthesis docs by default.
 
-`MASTER_RESEARCH.md` is legacy/optional only. It is not required, not primary, and must be created only when the project owner explicitly asks for an additional long-form artifact after the three required artifacts exist.
-
 ## Evidence ID Convention
 
 Use stable evidence IDs in `RAW_DATA_DIGEST.md` and reference those IDs compactly in `CEO_BRIEF.md` and `CHATGPT_PROJECT_DOC.md`:

@@ -1,0 +1,3 @@
+
+{"ts":"2026-05-28T03:35:08.124Z","runId":"run_e398be625787c92a","level":"info","event":"lane.started","laneId":"mission-objective-counterevidence"}
+{"ts":"2026-05-28T03:35:08.125Z","runId":"run_e398be625787c92a","level":"info","event":"lane.complete","laneId":"mission-objective-counterevidence","data":{"inputTokens":1628,"outputTokens":1628,"totalTokens":3256,"estimatedCostUsd":0,"localOnly":true}}

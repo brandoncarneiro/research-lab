@@ -2,7 +2,7 @@
 
 Composio MCP is optional advanced tooling for teams that want a stricter runtime boundary around Codex research tools.
 
-Research Lab does not require Composio. The default workflow works when parent Codex and bounded subagents have ordinary public web/search, browser/open URL, local file, and repo-write tools. In every setup, Codex and subagents must follow `docs/TOOL_MENU.md` rather than mixing unrelated local, account, paid, or production tools into research work.
+Research Lab does not require Composio. The default runtime works with local files, checked source packs, existing raw artifacts, and command executors. If a project uses Composio for source collection before writing raw lane artifacts, that collection must follow `docs/TOOL_MENU.md` rather than mixing unrelated account, paid, or production tools into research work.
 
 ## Policy
 
@@ -13,7 +13,7 @@ Research Lab does not require Composio. The default workflow works when parent C
 - Keep Firecrawl, Apify, SerpAPI, Tavily, and Exa as optional paid fallbacks only after explicit approval and API/account setup.
 - Keep Gmail, Calendar, Slack, Supabase, Vercel, Stripe, production databases, and sending/posting tools out unless explicitly needed.
 - Codex should not use tools outside the research menu.
-- A broad generic Composio MCP can be used for supervised experiments only when the prompt and run brief restrict usage to `docs/TOOL_MENU.md`.
+- A broad generic Composio MCP can be used for supervised experiments only when the run brief restricts usage to `docs/TOOL_MENU.md`.
 - Use the TypeScript session-management scripts in this repo to create filtered research-scoped Composio sessions when you need stronger tool isolation.
 - Do not create custom Composio tools or toolkits for research scoping unless current Composio SDK docs prove they are required.
 
@@ -66,7 +66,7 @@ The session scripts store raw session IDs and MCP URLs only in the local gitigno
 
 ## Setup Expectations
 
-Before a run starts, confirm that Codex can access the tools allowed by `docs/TOOL_MENU.md` and needed for the brief. That can be ordinary Codex tools, a narrow Composio MCP session, or a supervised generic Composio MCP constrained by the run prompt.
+Before a run starts, confirm that any external collection tool is allowed by `docs/TOOL_MENU.md` and needed for the brief. That can be a narrow Composio MCP session or a supervised generic Composio MCP constrained by the run brief.
 
 If the needed tool is unavailable, record the blocker in the run folder and stop rather than substituting an unapproved tool.
 
