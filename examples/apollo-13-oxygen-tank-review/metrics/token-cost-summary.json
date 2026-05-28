@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "runId": "run_e398be625787c92a",
-  "generatedAt": "2026-05-28T03:35:08.125Z",
+  "generatedAt": "2026-05-28T23:53:27.985Z",
   "executionMode": "local",
   "lanes": [
     {
@@ -29,9 +29,9 @@
       "provider": "local",
       "model": "fixture",
       "localOnly": true,
-      "inputTokens": 1677,
-      "outputTokens": 1677,
-      "totalTokens": 3354,
+      "inputTokens": 1682,
+      "outputTokens": 1682,
+      "totalTokens": 3364,
       "estimatedCostUsd": 0
     },
     {
@@ -39,16 +39,16 @@
       "provider": "local",
       "model": "fixture",
       "localOnly": true,
-      "inputTokens": 1709,
-      "outputTokens": 1709,
-      "totalTokens": 3418,
+      "inputTokens": 1712,
+      "outputTokens": 1712,
+      "totalTokens": 3424,
       "estimatedCostUsd": 0
     }
   ],
   "totals": {
-    "inputTokens": 6712,
-    "outputTokens": 6712,
-    "totalTokens": 13424,
+    "inputTokens": 6720,
+    "outputTokens": 6720,
+    "totalTokens": 13440,
     "estimatedCostUsd": 0,
     "localOnly": true
   }

@@ -1,7 +1,7 @@
 import { basename, join } from "node:path";
 import type { LaneDefinition, LaneManifest, RunManifest, Usage } from "./contracts.js";
 import { EXTRACTED_OUTPUTS, FINAL_OUTPUTS, SCHEMA_VERSION } from "./contracts.js";
-import { ensureDir, hashDirectory, pathExists, readJson, readText, relativePath, resolveInside, sha256, writeJson } from "./fs.js";
+import { ensureDir, hashDirectory, pathExists, readJson, readText, resolveInside, sha256, writeJson } from "./fs.js";
 import { estimateTokens, extractBriefTitle, extractProfilePath, parseLaneDefinitions } from "./markdown.js";
 
 export const ZERO_USAGE: Usage = {

@@ -11,6 +11,10 @@ const ACTIVE_PROFILE = process.env.RESEARCH_PROFILE ?? "example";
 const REQUIRED_TRACKED_FILES = [
   "README.md",
   "RESEARCH_BACKLOG.md",
+  ".github/workflows/ci.yml",
+  "CHANGELOG.md",
+  "biome.json",
+  "artifact-profiles/default.json",
   "context/README.md",
   "CONTRIBUTING.md",
   "profiles/README.md",
@@ -34,13 +38,14 @@ const REQUIRED_TRACKED_FILES = [
   "templates/lane-output.md",
   "templates/RAW_DATA_DIGEST.md",
   "templates/CEO_BRIEF.md",
-  "templates/CHATGPT_PROJECT_DOC.md",
+  "templates/PROJECT_CONTEXT.md",
   "examples/apollo-13-oxygen-tank-review/00-brief.md",
   "examples/apollo-13-oxygen-tank-review/run.json",
   "examples/apollo-13-oxygen-tank-review/validation/report.json",
 ] as const;
 
 const EXPECTED_FOLDERS = [
+  "artifact-profiles",
   "context",
   "docs",
   "examples",
@@ -100,7 +105,6 @@ async function verifyRequiredTrackedFiles(): Promise<void> {
   for (const file of REQUIRED_TRACKED_FILES) {
     if (!await isReadableFile(file)) {
       checks.push({ level: "blocked", message: `Missing or unreadable required file: ${file}` });
-      continue;
     }
 
   }

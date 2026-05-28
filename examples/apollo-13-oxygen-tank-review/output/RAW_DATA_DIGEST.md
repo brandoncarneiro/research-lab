@@ -32,14 +32,14 @@ Deterministic synthesis read the checked raw lane files after runtime lane execu
 | R1 | timeline-reconciliation | S1 | The pre-mission press kit supports that Apollo 13 was planned as a lunar-landing mission. Source: S1. Confidence: high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
 | R2 | timeline-reconciliation | S2 | The mission report excerpt supports that Apollo 13 was aborted after abrupt service-module oxygen loss associated with one oxygen tank at about 56 hours into flight. Source: S2. Confidence: high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
 | R3 | timeline-reconciliation | S3 | The transcript excerpt supports treating air-to-ground communications as the in-the-moment symptom record, not the later root-cause determination. Source: S3. Confidence: medium-high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
-| R4 | timeline-reconciliation | S2 | The mission report excerpt supports that the crew returned safely to Earth on April 17, 1970. Source: S2. Confidence: high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
+| R4 | timeline-reconciliation | S2 | The mission report excerpt supports that the crew returned to Earth with the crew alive on April 17, 1970. Source: S2. Confidence: high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
 | R5 | failure-chain | S4 | The review-board excerpt supports that the accident chain centered on service module oxygen tank 2. Source: S4. Confidence: high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
 | R6 | failure-chain | S4 | The review-board excerpt supports framing the accident as a combination of mistakes and an unforgiving design rather than a random isolated malfunction. Source: S4. Confidence: medium-high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
 | R7 | failure-chain | S2 | The mission-report excerpt supports that oxygen loss reduced command/service module electrical power, oxygen, and water capability. Source: S2. Confidence: high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
 | R8 | failure-chain | S3 | The transcript excerpt supports that voice communications record symptoms and operator awareness around the accident window, not the full later engineering cause. Source: S3. Confidence: medium-high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
 | R9 | operational-recovery | S2 | The mission-report excerpt supports that oxygen loss reduced command/service module power, oxygen, and water capability. Source: S2. Confidence: high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
 | R10 | operational-recovery | S2 | The mission-report excerpt supports that the lunar module became central to survival and recovery after the service module failure. Source: S2. Confidence: high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
-| R11 | operational-recovery | S2 | The mission-report excerpt supports that the crew returned safely to Earth on April 17, 1970. Source: S2. Confidence: high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
+| R11 | operational-recovery | S2 | The mission-report excerpt supports that the crew returned to Earth with the crew alive on April 17, 1970. Source: S2. Confidence: high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
 | R12 | operational-recovery | S4 | The review-board excerpt supports that corrective redesign and recertification followed for later Apollo missions. Source: S4. Confidence: medium-high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
 | R13 | mission-objective-counterevidence | S1 | The press-kit excerpt supports that Apollo 13 was planned as a lunar-landing mission. Source: S1. Confidence: high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
 | R14 | mission-objective-counterevidence | S1 | The press-kit excerpt supports using the pre-mission document as planned-objective evidence, not actual-outcome evidence. Source: S1. Confidence: high. | claim | Supports lane-level finding | Bound to cited source-pack excerpt |
@@ -61,8 +61,8 @@ No material finding. This run uses official historical source excerpts, not user
 ## 7. Pattern Library
 | Pattern ID | Pattern | Signal | Evidence IDs | Strength | Decision relevance | Caveat |
 | --- | --- | --- | --- | --- | --- | --- |
-| P1 | The timeline should be synthesized as planned lunar mission, oxygen-system accident, emergency recovery, and safe return rather than as a simple binary success/failure story. Source: S1, S2, S3. | INFERENCE | S1, S2, S3 | medium | Supports the research decision | Deterministic extraction from lane artifact |
-| P2 | Apollo 13 can be represented as planned lunar landing, in-flight oxygen-system accident, emergency recovery, and safe return from the checked source pack. Source: S1, S2, S3. | INFERENCE | S1, S2, S3 | medium | Supports the research decision | Deterministic extraction from lane artifact |
+| P1 | The timeline should be synthesized as planned lunar mission, oxygen-system accident, emergency recovery, and crew return rather than as a simple binary success/failure story. Source: S1, S2, S3. | INFERENCE | S1, S2, S3 | medium | Supports the research decision | Deterministic extraction from lane artifact |
+| P2 | Apollo 13 can be represented as planned lunar landing, in-flight oxygen-system accident, emergency recovery, and crew return from the checked source pack. Source: S1, S2, S3. | INFERENCE | S1, S2, S3 | medium | Supports the research decision | Deterministic extraction from lane artifact |
 | P3 | The final synthesis should distinguish the proximate in-flight event from the latent hardware/process/design chain. Source: S4, S2, S3. | INFERENCE | S4, S2, S3 | medium | Supports the research decision | Deterministic extraction from lane artifact |
 | P4 | The source pack supports a layered causal read: symptom record, systems consequence, and review-board root-cause frame are different evidence layers. Source: S4, S2, S3. | INFERENCE | S4, S2, S3 | medium | Supports the research decision | Deterministic extraction from lane artifact |
 | P5 | Recovery success is real operational evidence, but it should not be used to soften the engineering-failure finding. Source: S2, S4. | INFERENCE | S2, S4 | medium | Supports the research decision | Deterministic extraction from lane artifact |
@@ -86,7 +86,7 @@ Not applicable.
 | --- | --- | --- | --- |
 | N1 | The excerpt pack cannot support a complete second-by-second timeline | S3 | keep final claims bounded |
 | N2 | The checked corpus does not include complete engineering appendices or physical recovered tank evidence | S4 | do not overstate mechanical certainty beyond the report |
-| N3 | Safe return alone does not prove the original system was acceptably safe | S4 | final brief must not confuse rescue success with system validation |
+| N3 | Crew return alone does not prove the original system was risk was acceptable | S4 | final brief must not confuse rescue success with system validation |
 | N4 | The source pack does not support claiming Apollo 13 achieved its original lunar-surface objective | S1, S2 | final synthesis must keep mission-objective failure explicit |
 
 ## 11. Blocked / Weak Sources
@@ -109,8 +109,8 @@ Not applicable.
 Strongest evidence is primary/public-domain source material. Confidence is bounded by the deliberately small source pack and by deterministic extraction from 4 lanes.
 
 ## 14. Candidate Project Context
-- The timeline should be synthesized as planned lunar mission, oxygen-system accident, emergency recovery, and safe return rather than as a simple binary success/failure story. Source: S1, S2, S3. (P1)
-- Apollo 13 can be represented as planned lunar landing, in-flight oxygen-system accident, emergency recovery, and safe return from the checked source pack. Source: S1, S2, S3. (P2)
+- The timeline should be synthesized as planned lunar mission, oxygen-system accident, emergency recovery, and crew return rather than as a simple binary success/failure story. Source: S1, S2, S3. (P1)
+- Apollo 13 can be represented as planned lunar landing, in-flight oxygen-system accident, emergency recovery, and crew return from the checked source pack. Source: S1, S2, S3. (P2)
 - The final synthesis should distinguish the proximate in-flight event from the latent hardware/process/design chain. Source: S4, S2, S3. (P3)
 - The source pack supports a layered causal read: symptom record, systems consequence, and review-board root-cause frame are different evidence layers. Source: S4, S2, S3. (P4)
 - Recovery success is real operational evidence, but it should not be used to soften the engineering-failure finding. Source: S2, S4. (P5)

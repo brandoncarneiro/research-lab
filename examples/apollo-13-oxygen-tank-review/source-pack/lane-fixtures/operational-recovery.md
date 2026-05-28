@@ -38,7 +38,7 @@ Whether final synthesis can treat recovery success and engineering failure as si
 
 | Step | Query / URL / Actor | Purpose | Result | Follow-up |
 | --- | --- | --- | --- | --- |
-| 1 | source-pack/S2-mission-report-excerpts.md | Mission-system consequences and safe return | useful | use as recovery spine |
+| 1 | source-pack/S2-mission-report-excerpts.md | Mission-system consequences and crew return | useful | use as recovery spine |
 | 2 | source-pack/S3-air-ground-transcript-excerpts.md | Operator-awareness boundary | useful | keep transcript role narrow |
 | 3 | source-pack/S1-review-board-report-excerpts.md | Engineering-failure boundary | useful | compare recovery success with accident cause |
 
@@ -52,7 +52,7 @@ Whether final synthesis can treat recovery success and engineering failure as si
 
 | Source ID | Source | URL/reference | Source type | Result | Confidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| S1 | Apollo 13 Mission Report excerpt | source-pack/S2-mission-report-excerpts.md | primary | useful | high | systems consequences and safe return |
+| S1 | Apollo 13 Mission Report excerpt | source-pack/S2-mission-report-excerpts.md | primary | useful | high | systems consequences and crew return |
 | S2 | Apollo 13 Technical Air-To-Ground Voice Transcription excerpt | source-pack/S3-air-ground-transcript-excerpts.md | primary | useful | medium-high | symptom and operator-awareness record |
 | S3 | Apollo 13 Review Board excerpt | source-pack/S1-review-board-report-excerpts.md | primary | useful | medium-high | upstream failure boundary |
 
@@ -66,7 +66,7 @@ Whether final synthesis can treat recovery success and engineering failure as si
 
 - `FACT`: The mission-report excerpt supports that oxygen loss reduced command/service module power, oxygen, and water capability. Source: S1. Confidence: high.
 - `FACT`: The mission-report excerpt supports that the lunar module became central to survival and recovery after the service module failure. Source: S1. Confidence: high.
-- `FACT`: The mission-report excerpt supports that the crew returned safely to Earth on April 17, 1970. Source: S1. Confidence: high.
+- `FACT`: The mission-report excerpt supports that the crew returned to Earth with the crew alive on April 17, 1970. Source: S1. Confidence: high.
 - `FACT`: The review-board excerpt supports that corrective redesign and recertification followed for later Apollo missions. Source: S3. Confidence: medium-high.
 
 ## Inferences
@@ -94,7 +94,7 @@ Whether final synthesis can treat recovery success and engineering failure as si
 
 | Lane Negative ID | What weakens the thesis | Source ID | Decision impact |
 | --- | --- | --- | --- |
-| LN1 | Safe return alone does not prove the original system was acceptably safe | S3 | final brief must not confuse rescue success with system validation |
+| LN1 | Crew return alone does not prove the original system was risk was acceptable | S3 | final brief must not confuse rescue success with system validation |
 
 ## What This Lane Proves
 

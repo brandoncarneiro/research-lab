@@ -7,9 +7,9 @@
   "profilePath": "profiles/example/PROFILE.md",
   "status": "validated",
   "executionMode": "local",
-  "sourcePackHash": "39e7b485bdee6e3237c7d277f5b3ce5a02397fe284b01547876b9be970eb453d",
+  "sourcePackHash": "8de9ea8ed98b9762bc807a98fda1920bb338d600b9817688e4b003e8a9fb8508",
   "createdAt": "2026-05-28T03:23:14.805Z",
-  "updatedAt": "2026-05-28T03:35:08.438Z",
+  "updatedAt": "2026-05-28T23:53:28.684Z",
   "maxConcurrency": 2,
   "lanes": [
     {
@@ -48,7 +48,7 @@
     "output": [
       "output/RAW_DATA_DIGEST.md",
       "output/CEO_BRIEF.md",
-      "output/CHATGPT_PROJECT_DOC.md"
+      "output/PROJECT_CONTEXT.md"
     ],
     "logs": [
       "logs/run.jsonl",
@@ -61,12 +61,12 @@
     "validation": "validation/report.json"
   },
   "totals": {
-    "inputTokens": 6712,
-    "outputTokens": 6712,
-    "totalTokens": 13424,
+    "inputTokens": 6720,
+    "outputTokens": 6720,
+    "totalTokens": 13440,
     "estimatedCostUsd": 0,
     "localOnly": true
   },
-  "startedAt": "2026-05-28T03:35:08.120Z",
-  "completedAt": "2026-05-28T03:35:08.279Z"
+  "startedAt": "2026-05-28T23:53:27.981Z",
+  "completedAt": "2026-05-28T23:53:28.130Z"
 }

@@ -248,7 +248,7 @@ async function validateEvidenceReferences(runDir: string, issues: ValidationIssu
     }
   }
 
-  for (const artifactPath of ["output/CEO_BRIEF.md", "output/CHATGPT_PROJECT_DOC.md"]) {
+  for (const artifactPath of ["output/CEO_BRIEF.md", "output/PROJECT_CONTEXT.md"]) {
     if (!await pathExists(join(runDir, artifactPath))) {
       continue;
     }

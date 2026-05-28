@@ -62,7 +62,7 @@ Include:
 
 Exclude:
 
-- Full NASA safety-culture history
+- Full NASA risk-culture history
 - Full engineering reconstruction beyond the cited source pack
 - Claims about every Apollo risk-control process
 - Cinematic, memoir, or secondary retellings
@@ -124,7 +124,7 @@ Approved exceptions for this run:
 
 - `output/RAW_DATA_DIGEST.md`
 - `output/CEO_BRIEF.md`
-- `output/CHATGPT_PROJECT_DOC.md`
+- `output/PROJECT_CONTEXT.md`
 
 ## Citation Rules
 

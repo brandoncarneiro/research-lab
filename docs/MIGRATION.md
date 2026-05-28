@@ -34,6 +34,10 @@ Manual or model-assisted work can still happen, but it should enter the runtime 
 
 Public reproducible examples should use `fixture` lanes and label their cost as local-only.
 
+## Artifact Rename
+
+The durable context artifact was renamed from `CHATGPT_PROJECT_DOC.md` to `PROJECT_CONTEXT.md`. New runtime contracts, templates, examples, and validation expect `output/PROJECT_CONTEXT.md`.
+
 ## Command Mapping
 
 Old manual workflow:

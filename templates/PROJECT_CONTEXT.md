@@ -1,4 +1,4 @@
-# ChatGPT Project Doc: <Research Topic>
+# Project Context: <Research Topic>
 
 **Date:** <YYYY-MM-DD>
 **Research run:** `<research/runs/YYYY-MM-DD-topic/>`

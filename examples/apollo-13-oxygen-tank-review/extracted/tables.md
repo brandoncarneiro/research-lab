@@ -14,7 +14,7 @@
 
 | Lane | Status | Provider | Model | Total tokens | Estimated cost USD |
 | --- | --- | --- | --- | ---: | ---: |
-| timeline-reconciliation | complete | local | fixture | 3418 | 0.000000 |
+| timeline-reconciliation | complete | local | fixture | 3424 | 0.000000 |
 | failure-chain | complete | local | fixture | 3396 | 0.000000 |
-| operational-recovery | complete | local | fixture | 3354 | 0.000000 |
+| operational-recovery | complete | local | fixture | 3364 | 0.000000 |
 | mission-objective-counterevidence | complete | local | fixture | 3256 | 0.000000 |

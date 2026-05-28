@@ -1,17 +1,20 @@
 import { constants } from "node:fs";
 import { access, readFile, readdir, stat } from "node:fs/promises";
 import { join, relative } from "node:path";
+import { validateArtifactProfile } from "../../src/artifact-checks.js";
+
+const DEFAULT_ARTIFACT_PROFILE_PATH = "artifact-profiles/default.json";
 
 const REQUIRED_TEMPLATE_FILES = [
   "templates/CEO_BRIEF.md",
   "templates/RAW_DATA_DIGEST.md",
-  "templates/CHATGPT_PROJECT_DOC.md",
+  "templates/PROJECT_CONTEXT.md",
 ] as const;
 
 const REQUIRED_OUTPUT_PATHS = [
   "output/CEO_BRIEF.md",
   "output/RAW_DATA_DIGEST.md",
-  "output/CHATGPT_PROJECT_DOC.md",
+  "output/PROJECT_CONTEXT.md",
 ] as const;
 
 const REQUIRED_STANDARD_TERMS = [
@@ -27,6 +30,7 @@ const REQUIRED_STANDARD_TERMS = [
 
 const SCAN_ROOTS = [
   "README.md",
+  "artifact-profiles",
   "docs",
   "templates",
   "src",
@@ -37,11 +41,6 @@ type CheckLevel = "warning" | "blocked";
 type Check = {
   level: CheckLevel;
   message: string;
-};
-
-type TextFile = {
-  file: string;
-  text: string;
 };
 
 type Match = {
@@ -57,6 +56,7 @@ const contents = await Promise.all(files.map(async (file) => ({ file, text: awai
 const combinedText = contents.map(({ text }) => text).join("\n");
 
 await verifyRequiredTemplates();
+await verifyDefaultArtifactProfile();
 verifyRequiredOutputs();
 await verifyEvidenceStandard();
 verifyMasterResearchIsLegacyOnly();
@@ -72,6 +72,22 @@ async function verifyRequiredTemplates(): Promise<void> {
   }
 }
 
+async function verifyDefaultArtifactProfile(): Promise<void> {
+  if (!await isReadableFile(DEFAULT_ARTIFACT_PROFILE_PATH)) {
+    checks.push({ level: "blocked", message: `Missing or unreadable default artifact profile: ${DEFAULT_ARTIFACT_PROFILE_PATH}` });
+    return;
+  }
+
+  try {
+    const profile = JSON.parse(await readFile(DEFAULT_ARTIFACT_PROFILE_PATH, "utf8")) as unknown;
+    for (const issue of validateArtifactProfile(DEFAULT_ARTIFACT_PROFILE_PATH, profile)) {
+      checks.push({ level: "blocked", message: issue.message });
+    }
+  } catch (error) {
+    checks.push({ level: "blocked", message: `Default artifact profile is invalid JSON: ${errorMessage(error)}` });
+  }
+}
+
 function verifyRequiredOutputs(): void {
   for (const outputPath of REQUIRED_OUTPUT_PATHS) {
     if (!combinedText.includes(outputPath)) {
@@ -82,6 +98,10 @@ function verifyRequiredOutputs(): void {
   if (!/exactly three final artifacts/i.test(combinedText)) {
     checks.push({ level: "blocked", message: "Artifact standard does not state that runs produce exactly three final artifacts." });
   }
+}
+
+function errorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
 }
 
 async function verifyEvidenceStandard(): Promise<void> {

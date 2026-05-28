@@ -1,5 +1,38 @@
-import type { ValidationIssue } from "./contracts.js";
+import { EXTRACTED_OUTPUTS, FINAL_OUTPUTS } from "./contracts.js";
+import type { ArtifactProfile, ValidationIssue } from "./contracts.js";
 import { extractHeadingSection, hasPlaceholder, parseAllMarkdownTables } from "./markdown.js";
+
+export function validateArtifactProfile(path: string, value: unknown): ValidationIssue[] {
+  const issues: ValidationIssue[] = [];
+
+  if (!isArtifactProfile(value)) {
+    return [{ level: "error", code: "artifact_profile.invalid", message: "Artifact profile must define profileId, description, deterministic synthesisMode, extractedOutputs, and finalOutputs.", path }];
+  }
+
+  if (!/^[a-z0-9][a-z0-9-]*$/.test(value.profileId)) {
+    issues.push({ level: "error", code: "artifact_profile.id", message: "Artifact profile profileId must be lowercase kebab-case.", path });
+  }
+
+  if (value.synthesisMode !== "deterministic") {
+    issues.push({ level: "error", code: "artifact_profile.synthesis_mode", message: "Artifact profile synthesisMode must be deterministic.", path });
+  }
+
+  issues.push(...validateExactPaths(path, "artifact_profile.extracted_outputs", "extractedOutputs", value.extractedOutputs, EXTRACTED_OUTPUTS));
+  issues.push(...validateExactPaths(path, "artifact_profile.final_outputs", "finalOutputs", value.finalOutputs, FINAL_OUTPUTS));
+
+  for (const outputPath of value.finalOutputs) {
+    if (!outputPath.startsWith("output/") || !outputPath.endsWith(".md")) {
+      issues.push({ level: "error", code: "artifact_profile.final_path", message: `Final artifact must be a Markdown file under output/: ${outputPath}.`, path });
+    }
+  }
+
+  const legacyProjectDocPattern = new RegExp(["CHATGPT", "PROJECT", "DOC"].join("_"), "i");
+  if (value.finalOutputs.some((outputPath) => legacyProjectDocPattern.test(outputPath))) {
+    issues.push({ level: "error", code: "artifact_profile.old_artifact_name", message: "Artifact profile must use PROJECT_CONTEXT.md, not the legacy project-doc filename.", path });
+  }
+
+  return issues;
+}
 
 export function validateRawLaneText(path: string, text: string): ValidationIssue[] {
   const issues: ValidationIssue[] = [];
@@ -125,6 +158,41 @@ export function validateFinalArtifactText(path: string, text: string): Validatio
 
   if (hasPlaceholder(text)) {
     issues.push({ level: "error", code: "artifact.placeholder", message: "Final artifact still contains template placeholders.", path });
+  }
+
+  return issues;
+}
+
+function isArtifactProfile(value: unknown): value is ArtifactProfile {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const candidate = value as Partial<ArtifactProfile>;
+  return typeof candidate.profileId === "string"
+    && typeof candidate.description === "string"
+    && candidate.synthesisMode === "deterministic"
+    && Array.isArray(candidate.extractedOutputs)
+    && Array.isArray(candidate.finalOutputs)
+    && candidate.extractedOutputs.every((item) => typeof item === "string")
+    && candidate.finalOutputs.every((item) => typeof item === "string");
+}
+
+function validateExactPaths(
+  path: string,
+  code: string,
+  label: string,
+  actual: readonly string[],
+  expected: readonly string[],
+): ValidationIssue[] {
+  const issues: ValidationIssue[] = [];
+
+  if (new Set(actual).size !== actual.length) {
+    issues.push({ level: "error", code: `${code}.duplicate`, message: `${label} contains duplicate paths.`, path });
+  }
+
+  if (actual.length !== expected.length || actual.some((item, index) => item !== expected[index])) {
+    issues.push({ level: "error", code, message: `${label} must match the default runtime contract: ${expected.join(", ")}.`, path });
   }
 
   return issues;

@@ -24,17 +24,17 @@ This standard is profile-independent. Project profiles may add stricter rules, b
 
 ## Required Final Artifact Standard
 
-Every standard research run must produce exactly three final artifacts under `output/` unless the project owner explicitly requests otherwise:
+Every standard research run must produce exactly three final artifacts under `output/` unless a future artifact profile explicitly changes the runtime contract:
 
 1. `RAW_DATA_DIGEST.md`: evidence layer. It is not narrative. It contains collection scope, source index, method notes, normalized records, quantitative signals, raw language, patterns, domain/market/competitor observations when relevant, contradictions, negative evidence, blocked/weak sources, confidence notes, source-to-evidence mapping, and candidate project context.
 2. `CEO_BRIEF.md`: decision-facing signal layer. Target 1-2 pages. It compresses the digest into what was learned, what normalized data exists, what signal emerged, what categories or segments matter, what findings carry high/medium/low confidence, what decision changes, and what should happen next.
-3. `CHATGPT_PROJECT_DOC.md`: durable project-context capsule. It is not a report and not a raw dump. It contains only stable findings, do-not-overclaim rules, durable caveats, decisions affected, do-not-add-to-context rules, and a revisit trigger.
+3. `PROJECT_CONTEXT.md`: durable project-context capsule. It is not a report and not a raw dump. It contains only stable findings, do-not-overclaim rules, durable caveats, decisions affected, do-not-add-to-context rules, and a revisit trigger.
 
-Raw lane outputs under `raw/` and extraction files under `extracted/` are intermediate evidence only. Do not create duplicate summaries, alternate reports, or extra synthesis docs by default.
+Raw lane outputs under `raw/` and extraction files under `extracted/` are intermediate evidence only. Do not create duplicate summaries, alternate reports, or extra synthesis docs by default. The checked artifact profile for this contract is `artifact-profiles/default.json`.
 
 ## Evidence ID Convention
 
-Use stable evidence IDs in `RAW_DATA_DIGEST.md` and reference those IDs compactly in `CEO_BRIEF.md` and `CHATGPT_PROJECT_DOC.md`:
+Use stable evidence IDs in `RAW_DATA_DIGEST.md` and reference those IDs compactly in `CEO_BRIEF.md` and `PROJECT_CONTEXT.md`:
 
 - Sources: `S1`, `S2`, `S3`
 - Quantitative signals: `Q1`, `Q2`, `Q3`
@@ -42,7 +42,7 @@ Use stable evidence IDs in `RAW_DATA_DIGEST.md` and reference those IDs compactl
 - Contradictions: `C1`, `C2`, `C3`
 - Negative evidence: `N1`, `N2`, `N3`
 
-Every factual claim needs a Source ID. Every decision-brief conclusion must be supportable from `RAW_DATA_DIGEST.md`, but the brief should use IDs sparingly: one compact parenthetical or line per major claim is enough. Giant evidence-ID chains belong in `RAW_DATA_DIGEST.md`, not `CEO_BRIEF.md`. `CHATGPT_PROJECT_DOC.md` must exclude weak, temporary, or speculative findings.
+Every factual claim needs a Source ID. Every decision-brief conclusion must be supportable from `RAW_DATA_DIGEST.md`, but the brief should use IDs sparingly: one compact parenthetical or line per major claim is enough. Giant evidence-ID chains belong in `RAW_DATA_DIGEST.md`, not `CEO_BRIEF.md`. `PROJECT_CONTEXT.md` must exclude weak, temporary, or speculative findings.
 
 ## CEO Brief Standard
 

@@ -8,7 +8,7 @@
 
 **Decision owner / audience:** {name / role / audience}
 
-**Durable context destination:** {ChatGPT project / internal wiki / none / other}
+**Durable context destination:** {durable context store / internal wiki / none / other}
 
 ## Research Title
 
@@ -174,7 +174,7 @@ Extracted outputs are intermediate working notes only. They support `RAW_DATA_DI
 
 - `output/CEO_BRIEF.md`
 - `output/RAW_DATA_DIGEST.md`
-- `output/CHATGPT_PROJECT_DOC.md`
+- `output/PROJECT_CONTEXT.md`
 
 Use `docs/RESEARCH_STANDARD.md` for artifact roles and evidence rules. Exactly these three final artifacts are required. Do not create duplicate summaries, alternate reports, or extra synthesis documents.
 
@@ -201,12 +201,12 @@ If evidence is insufficient, write the blocker plainly. Do not compensate with c
 Before accepting final artifacts:
 
 - [ ] Active project profile was read
-- [ ] Exactly three final artifacts exist by default: `CEO_BRIEF.md`, `RAW_DATA_DIGEST.md`, and `CHATGPT_PROJECT_DOC.md`
+- [ ] Exactly three final artifacts exist by default: `CEO_BRIEF.md`, `RAW_DATA_DIGEST.md`, and `PROJECT_CONTEXT.md`
 - [ ] No duplicate summaries, alternate reports, or extra synthesis docs were created by default
 - [ ] `run.json`, `lanes/*.json`, `logs/*.jsonl`, `metrics/token-cost-summary.json`, and `validation/report.json` exist
 - [ ] Every required raw lane file exists or an explicit blocker is recorded
 - [ ] Final artifacts pass `docs/RESEARCH_STANDARD.md`
-- [ ] `CHATGPT_PROJECT_DOC.md` excludes weak, temporary, or speculative findings
+- [ ] `PROJECT_CONTEXT.md` excludes weak, temporary, or speculative findings
 
 ## Final Answer Requirements
 

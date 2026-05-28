@@ -103,7 +103,7 @@ async function executeLane(runDir: string, run: RunManifest, lane: LaneManifest)
   const runLog = join(runDir, "logs/run.jsonl");
   const laneLog = join(runDir, `logs/${lane.laneId}.jsonl`);
   const startedAt = new Date().toISOString();
-  let current: LaneManifest = {
+  const current: LaneManifest = {
     ...lane,
     status: "running",
     startedAt,

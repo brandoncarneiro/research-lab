@@ -28,6 +28,7 @@ It is intentionally small. It does not provide autonomous browsing, hidden worke
 ```bash
 npm install
 npm run typecheck
+npm run lint
 npm test
 npm run preflight
 ```
@@ -47,6 +48,8 @@ research-lab run <run-dir> [--force] [--max-concurrency N]
 research-lab synthesize <run-dir> [--force]
 research-lab validate <run-dir> [--json]
 research-lab status <run-dir> [--json]
+research-lab help [command]
+research-lab --version
 ```
 
 Development equivalents:
@@ -83,7 +86,7 @@ The example writes:
 - `extracted/*.md`
 - `output/RAW_DATA_DIGEST.md`
 - `output/CEO_BRIEF.md`
-- `output/CHATGPT_PROJECT_DOC.md`
+- `output/PROJECT_CONTEXT.md`
 - `validation/report.json`
 - `screenshots/status.svg`
 
@@ -104,7 +107,7 @@ flowchart TD
   Synth --> Extracted["extracted/*.md"]
   Synth --> Digest["output/RAW_DATA_DIGEST.md"]
   Digest --> BriefOut["output/CEO_BRIEF.md"]
-  Digest --> ProjectDoc["output/CHATGPT_PROJECT_DOC.md"]
+  Digest --> ProjectDoc["output/PROJECT_CONTEXT.md"]
   State --> Validate["research-lab validate"]
   Logs --> Validate
   Metrics --> Validate
@@ -122,6 +125,23 @@ flowchart TD
 4. `synthesize` reads raw lane artifacts and writes extracted notes plus exactly three final outputs.
 5. `validate` checks lifecycle coherence, required artifacts, citation/evidence reference closure, logs, token/cost math, output count, and concurrency.
 6. `status` prints the current run state without mutating evidence artifacts.
+
+## Synthesis Mechanics
+
+`research-lab synthesize` is deterministic filesystem composition. It does not call OpenAI, Anthropic, local LLMs, search APIs, browsers, or hidden workers.
+
+Inputs:
+
+- `run.json`
+- `lanes/*.json`
+- `raw/*.md`
+- the default artifact profile in `artifact-profiles/default.json`
+
+The command parses source tables, fact bullets, inference bullets, quantitative rows, contradictions, negative evidence, blocked sources, open questions, and lane limits from raw lane artifacts. It normalizes source IDs, assigns digest IDs, writes `extracted/*.md`, then writes `output/RAW_DATA_DIGEST.md`, `output/CEO_BRIEF.md`, and `output/PROJECT_CONTEXT.md`.
+
+Provider or model execution is separate. A lane may be an `artifact` lane supplied by a human or outside process, a `fixture` lane for reproducible local examples, or a `command` lane that runs an explicit local command and writes `raw/<lane>.md`. The runtime labels provider/model metadata for audit and accounting; it does not claim that a lane was model-backed unless the lane manifest and command actually make that true.
+
+Validation proves artifact coherence: required files exist, logs parse, token/cost totals are nonnegative and internally consistent, raw lane headings and citation markers are present, final artifacts only reference defined digest evidence IDs, and concurrency stayed within the manifest. It does not prove the real-world truth of a claim, source completeness, or expert judgment quality.
 
 ## Lane Executors
 
@@ -147,6 +167,14 @@ Lane manifests live under `lanes/*.json`.
 ```
 
 `command` lanes run a local command. The runtime sets `RESEARCH_LAB_RUN_DIR`, `RESEARCH_LAB_LANE_ID`, and `RESEARCH_LAB_RAW_PATH`; the command must write the raw lane file.
+
+## Profiles
+
+Project profiles live under `profiles/`. They describe the project context, decision taxonomy, source rules, backlog, first-run defaults, and tool policy for a research program. They do not alter the core evidence standard or make internal profile text count as external proof.
+
+Artifact profiles live under `artifact-profiles/`. They define the output contract that synthesis and validation must obey. The default artifact profile is intentionally narrow: deterministic synthesis into `RAW_DATA_DIGEST.md`, `CEO_BRIEF.md`, and `PROJECT_CONTEXT.md`.
+
+Use `profiles/example/` for a minimal public shape reference and `profiles/incident-review/` for a more concrete public profile pattern. Private project profiles should stay in ignored local folders.
 
 ## Validation Scope
 

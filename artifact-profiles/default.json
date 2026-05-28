@@ -1,0 +1,16 @@
+{
+  "profileId": "standard-three-artifact",
+  "description": "Default deterministic synthesis contract for source-grounded research runs.",
+  "synthesisMode": "deterministic",
+  "extractedOutputs": [
+    "extracted/findings.md",
+    "extracted/contradictions.md",
+    "extracted/tables.md",
+    "extracted/open-questions.md"
+  ],
+  "finalOutputs": [
+    "output/RAW_DATA_DIGEST.md",
+    "output/CEO_BRIEF.md",
+    "output/PROJECT_CONTEXT.md"
+  ]
+}

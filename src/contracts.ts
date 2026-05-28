@@ -1,17 +1,33 @@
 export const SCHEMA_VERSION = 1;
 
-export const FINAL_OUTPUTS = [
-  "output/RAW_DATA_DIGEST.md",
-  "output/CEO_BRIEF.md",
-  "output/CHATGPT_PROJECT_DOC.md",
-] as const;
+export type ArtifactProfile = {
+  profileId: string;
+  description: string;
+  synthesisMode: "deterministic";
+  extractedOutputs: readonly string[];
+  finalOutputs: readonly string[];
+};
 
-export const EXTRACTED_OUTPUTS = [
-  "extracted/findings.md",
-  "extracted/contradictions.md",
-  "extracted/tables.md",
-  "extracted/open-questions.md",
-] as const;
+export const DEFAULT_ARTIFACT_PROFILE = {
+  profileId: "standard-three-artifact",
+  description: "Default deterministic synthesis contract for source-grounded research runs.",
+  synthesisMode: "deterministic",
+  extractedOutputs: [
+    "extracted/findings.md",
+    "extracted/contradictions.md",
+    "extracted/tables.md",
+    "extracted/open-questions.md",
+  ],
+  finalOutputs: [
+    "output/RAW_DATA_DIGEST.md",
+    "output/CEO_BRIEF.md",
+    "output/PROJECT_CONTEXT.md",
+  ],
+} as const satisfies ArtifactProfile;
+
+export const FINAL_OUTPUTS = DEFAULT_ARTIFACT_PROFILE.finalOutputs;
+
+export const EXTRACTED_OUTPUTS = DEFAULT_ARTIFACT_PROFILE.extractedOutputs;
 
 export type RunStatus =
   | "planned"

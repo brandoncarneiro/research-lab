@@ -84,12 +84,12 @@ export async function synthesizeRun(runDir: string, options: { force?: boolean }
     event: "artifact.written",
     data: { path: "output/CEO_BRIEF.md" },
   });
-  await writeText(join(runDir, "output/CHATGPT_PROJECT_DOC.md"), renderProjectDoc(run, rawLanes, digestIds));
+  await writeText(join(runDir, "output/PROJECT_CONTEXT.md"), renderProjectDoc(run, rawLanes, digestIds));
   await writeLog(join(runDir, "logs/run.jsonl"), {
     runId: run.runId,
     level: "info",
     event: "artifact.written",
-    data: { path: "output/CHATGPT_PROJECT_DOC.md" },
+    data: { path: "output/PROJECT_CONTEXT.md" },
   });
 
   const completed: RunManifest = {
@@ -467,7 +467,7 @@ function renderCeoBrief(run: RunManifest, rawLanes: RawLane[], digestIds: Digest
 
 function renderProjectDoc(run: RunManifest, rawLanes: RawLane[], digestIds: DigestIds): string {
   return [
-    `# ChatGPT Project Doc: ${run.title}`,
+    `# Project Context: ${run.title}`,
     "",
     `**Research run:** \`${run.runId}\``,
     `**Confidence:** Medium-high`,

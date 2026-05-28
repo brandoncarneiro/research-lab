@@ -10,7 +10,7 @@ Example Project is a fictional product team evaluating a new customer-facing res
 
 - Decision owner: project owner
 - Default audience: product, strategy, or operations leadership
-- Durable context destination: project knowledge base or ChatGPT project context
+- Durable context destination: project knowledge base or durable research context
 
 ## Decision Taxonomy
 

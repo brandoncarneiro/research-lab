@@ -74,4 +74,4 @@ This is the evidence layer. Keep the source index, normalized records, raw table
 <What is strong, medium, weak, and why. No fake certainty. Preserve contradictions and negative evidence.>
 
 ## 14. Candidate Project Context
-<Short list of stable findings that may belong in CHATGPT_PROJECT_DOC.md. Exclude weak, temporary, or speculative items.>
+<Short list of stable findings that may belong in PROJECT_CONTEXT.md. Exclude weak, temporary, or speculative items.>

@@ -7,6 +7,7 @@ Research Lab is a local runtime around a run folder. The filesystem is the sourc
 | Surface | Role |
 | --- | --- |
 | `00-brief.md` | Human-readable decision, scope, lane table, source pack, budgets, and stop conditions |
+| `artifact-profiles/default.json` | Default final/extracted artifact contract used by synthesis and preflight |
 | `run.json` | Run lifecycle state, deterministic run ID, max concurrency, artifact paths, usage totals |
 | `lanes/*.json` | Lane lifecycle state, executor, provider/model label, attempts, usage, validation state |
 | `raw/*.md` | Source-grounded lane artifacts; one lane writes or owns one raw file |
@@ -44,9 +45,21 @@ Synthesis is a separate command. It reads raw lane files after lane execution an
 
 1. `output/RAW_DATA_DIGEST.md`
 2. `output/CEO_BRIEF.md`
-3. `output/CHATGPT_PROJECT_DOC.md`
+3. `output/PROJECT_CONTEXT.md`
 
 Raw lane files remain evidence inputs. Final artifacts are deterministic outputs from checked raw files.
+
+Synthesis is mixed only in the sense that lane inputs may come from different executors. The synthesis command itself is deterministic TypeScript code: it parses Markdown sections and tables, normalizes source IDs, builds record/pattern/quantity/contradiction/negative-evidence IDs, writes extracted working notes, and renders the three final artifacts. It does not call a model provider, browse the web, scrape sources, or run background agents.
+
+Model or provider use belongs at the lane boundary. If a project wants model-assisted research, configure a `command` lane that runs the approved local command and writes `raw/<lane>.md`; the resulting raw artifact is then validated and synthesized like any other lane output.
+
+Validation confirms structural and evidence-reference coherence. It does not certify source truth, source completeness, legal sufficiency, or publication-grade expert review.
+
+## Project Profiles Vs Artifact Profiles
+
+Project profiles under `profiles/` set context: project name, decision taxonomy, source rules, backlog, first-run suggestions, and tool/session defaults. They may narrow scope or make evidence rules stricter, but they must not weaken the core research standard.
+
+Artifact profiles under `artifact-profiles/` set output shape. The default profile requires the four extracted files plus exactly three final artifacts. Runtime constants, preflight, and tests validate that this default profile stays aligned with the code contract.
 
 ## Non-Goals
 

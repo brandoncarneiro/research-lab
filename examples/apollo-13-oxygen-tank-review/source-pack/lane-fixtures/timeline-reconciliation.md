@@ -68,11 +68,11 @@ Whether final synthesis can distinguish planned mission, in-flight accident timi
 - `FACT`: The pre-mission press kit supports that Apollo 13 was planned as a lunar-landing mission. Source: S1. Confidence: high.
 - `FACT`: The mission report excerpt supports that Apollo 13 was aborted after abrupt service-module oxygen loss associated with one oxygen tank at about 56 hours into flight. Source: S2. Confidence: high.
 - `FACT`: The transcript excerpt supports treating air-to-ground communications as the in-the-moment symptom record, not the later root-cause determination. Source: S3. Confidence: medium-high.
-- `FACT`: The mission report excerpt supports that the crew returned safely to Earth on April 17, 1970. Source: S2. Confidence: high.
+- `FACT`: The mission report excerpt supports that the crew returned to Earth with the crew alive on April 17, 1970. Source: S2. Confidence: high.
 
 ## Inferences
 
-- `INFERENCE`: The timeline should be synthesized as planned lunar mission, oxygen-system accident, emergency recovery, and safe return rather than as a simple binary success/failure story. Source: S1, S2, S3.
+- `INFERENCE`: The timeline should be synthesized as planned lunar mission, oxygen-system accident, emergency recovery, and crew return rather than as a simple binary success/failure story. Source: S1, S2, S3.
   - Based on: S1, S2, S3
   - Reasoning: planned objectives and actual recovery endpoint are supported by different source roles
   - Confidence: medium-high
@@ -99,7 +99,7 @@ Whether final synthesis can distinguish planned mission, in-flight accident timi
 
 ## What This Lane Proves
 
-- Apollo 13 can be represented as planned lunar landing, in-flight oxygen-system accident, emergency recovery, and safe return from the checked source pack. Source: S1, S2, S3.
+- Apollo 13 can be represented as planned lunar landing, in-flight oxygen-system accident, emergency recovery, and crew return from the checked source pack. Source: S1, S2, S3.
 
 ## What This Lane Does Not Prove
 

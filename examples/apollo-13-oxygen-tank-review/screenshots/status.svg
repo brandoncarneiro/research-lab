@@ -11,14 +11,14 @@
 <text x="24" y="112" class="terminal-line">status: validated</text>
 <text x="24" y="134" class="terminal-line">execution: local</text>
 <text x="24" y="156" class="terminal-line">lanes: 4 / max concurrency 2</text>
-<text x="24" y="178" class="terminal-line">tokens: 13424 (6712 in, 6712 out)</text>
+<text x="24" y="178" class="terminal-line">tokens: 13440 (6720 in, 6720 out)</text>
 <text x="24" y="200" class="terminal-line">estimated cost: $0.000000</text>
 <text x="24" y="222" class="terminal-line"></text>
 <text x="24" y="244" class="terminal-line">| Lane | Status | Provider | Model | Tokens | Cost |</text>
 <text x="24" y="266" class="terminal-line">| --- | --- | --- | --- | ---: | ---: |</text>
-<text x="24" y="288" class="terminal-line">| timeline-reconciliation | complete | local | fixture | 3418 | $0.000000 |</text>
+<text x="24" y="288" class="terminal-line">| timeline-reconciliation | complete | local | fixture | 3424 | $0.000000 |</text>
 <text x="24" y="310" class="terminal-line">| failure-chain | complete | local | fixture | 3396 | $0.000000 |</text>
-<text x="24" y="332" class="terminal-line">| operational-recovery | complete | local | fixture | 3354 | $0.000000 |</text>
+<text x="24" y="332" class="terminal-line">| operational-recovery | complete | local | fixture | 3364 | $0.000000 |</text>
 <text x="24" y="354" class="terminal-line">| mission-objective-counterevidence | complete | local | fixture | 3256 | $0.000000 |</text>
   </g>
   <style>

@@ -53,7 +53,7 @@ Whether Research Lab preserves negative evidence and planned-vs-actual contradic
 | Source ID | Source | URL/reference | Source type | Result | Confidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
 | S1 | Apollo 13 Press Kit excerpt | source-pack/S4-press-kit-excerpts.md | primary | useful | high | planned lunar-landing objective |
-| S2 | Apollo 13 Mission Report excerpt | source-pack/S2-mission-report-excerpts.md | primary | useful | high | actual abort and safe return |
+| S2 | Apollo 13 Mission Report excerpt | source-pack/S2-mission-report-excerpts.md | primary | useful | high | actual abort and crew return |
 | S3 | Apollo 13 Review Board excerpt | source-pack/S1-review-board-report-excerpts.md | primary | useful | medium-high | accident investigation and corrective action |
 
 ## Quantitative Signals

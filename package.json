@@ -23,9 +23,11 @@
   },
   "scripts": {
     "build": "tsc",
+    "lint": "biome lint .",
     "test": "node --import tsx --test \"tests/**/*.test.ts\"",
     "research-lab": "tsx src/cli.ts",
     "example:run": "tsx src/cli.ts run examples/apollo-13-oxygen-tank-review --force --max-concurrency 2 && tsx src/cli.ts synthesize examples/apollo-13-oxygen-tank-review --force && tsx src/cli.ts validate examples/apollo-13-oxygen-tank-review && tsx scripts/examples/render-status-screenshot.ts examples/apollo-13-oxygen-tank-review",
+    "examples:validate": "tsx src/cli.ts validate examples/apollo-13-oxygen-tank-review",
     "example:screenshot": "tsx scripts/examples/render-status-screenshot.ts examples/apollo-13-oxygen-tank-review",
     "example:status": "tsx src/cli.ts status examples/apollo-13-oxygen-tank-review",
     "composio:list-toolkits": "tsx scripts/composio/list-toolkits.ts",
@@ -39,12 +41,12 @@
     "preflight": "npm run preflight:first-run && npm run preflight:context && npm run preflight:tool-policy && npm run preflight:artifact-standard",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {
-    "@composio/core": "^0.10.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@biomejs/biome": "^2.4.16",
+    "@composio/core": "^0.10.0",
     "@types/node": "^25.9.1",
     "tsx": "^4.22.3",
-    "typescript": "^6.0.3"
+    "typescript": "^5.9.3"
   }
 }

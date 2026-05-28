@@ -34,5 +34,5 @@ research/runs/YYYY-MM-DD-topic/
 - Keep lanes independent and bounded.
 - Save raw lane evidence before synthesis.
 - Treat profile docs as context, not external proof.
-- Produce exactly three final artifacts: `RAW_DATA_DIGEST.md`, `CEO_BRIEF.md`, and `CHATGPT_PROJECT_DOC.md`.
+- Produce exactly three final artifacts: `RAW_DATA_DIGEST.md`, `CEO_BRIEF.md`, and `PROJECT_CONTEXT.md`.
 - Run `research-lab validate` before accepting the run.

@@ -13,4 +13,4 @@ Source URL: https://www.nasa.gov/wp-content/uploads/static/history/afj/ap13fj/pd
 ## Limits
 
 - This excerpt does not reproduce the full report.
-- It supports root-cause framing, not a full safety-culture history.
+- It supports root-cause framing, not a full risk-culture history.
